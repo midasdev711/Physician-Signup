@@ -46,16 +46,16 @@ class SignUpForm extends React.Component {
     // console.log('signUpForm props', this.props)
     const { getFieldDecorator } = this.props.form
 
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 20 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 20 },
-      },
-    };
+    // const formItemLayout = {
+    //   labelCol: {
+    //     xs: { span: 24 },
+    //     sm: { span: 20 },
+    //   },
+    //   wrapperCol: {
+    //     xs: { span: 24 },
+    //     sm: { span: 20 },
+    //   },
+    // }
 
     const tailFormItemLayout = {
       wrapperCol: {
@@ -77,7 +77,7 @@ class SignUpForm extends React.Component {
     return (
       <div className="sign-up-form">
         <Form layout="vertical" /* {...formItemLayout} */ onSubmit={this.handleSubmit}>
-          <Form.Item {...formItemLayout} label="Full Name" validateStatus="">
+          <Form.Item label="Full Name" validateStatus="">
             {getFieldDecorator('fullName', {
               rules: [{ required: true, message: 'Please input your Full Name!' }],
             })(
@@ -87,7 +87,7 @@ class SignUpForm extends React.Component {
               />,
             )}
           </Form.Item>
-          <Form.Item label="Email Address" validateStatus="">
+          <Form.Item label="Email Address" validateStatus="" className="form-item-email">
             {getFieldDecorator('email', {
               rules: [
                 {
@@ -101,7 +101,7 @@ class SignUpForm extends React.Component {
               ],
             })(<Input />)}
           </Form.Item>
-          <Form.Item {...formItemLayout} label="Phone Number" validateStatus="">
+          <Form.Item label="Phone Number" validateStatus="">
             {getFieldDecorator('phone', {
               rules: [
                 {
@@ -117,7 +117,7 @@ class SignUpForm extends React.Component {
               />
             )}
           </Form.Item>
-          <Form.Item {...formItemLayout} label="Password" hasFeedback validateStatus="">
+          <Form.Item label="Password" hasFeedback validateStatus="">
             {getFieldDecorator('password', {
               rules: [
                 {
@@ -135,12 +135,12 @@ class SignUpForm extends React.Component {
               />
             )}
           </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
+          <Form.Item {...tailFormItemLayout} className="form-item-submit-btn">
             <Button type="primary" htmlType="submit" className="sign-up-form-submit-btn">
               Claim Your Account
-          </Button>
+            </Button>
           </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
+          <Form.Item {...tailFormItemLayout} >
             <Paragraph className="sign-up-form-terms-conditions">
               By clicking "Claim Your Account", I agree to <br />
               <Link to="/terms-conditions">Terms {'&'} Conditions</Link> of signing up.

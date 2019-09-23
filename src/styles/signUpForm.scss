@@ -1,8 +1,31 @@
 @import './main.scss';
 
 .sign-up-form {
+
+  .ant-form-item {
+    width: 214px;
+    
+    @include media($md) {
+      width: 100%;
+    }
+  }
+  
+  .ant-form-item.form-item-email {
+    width: 293px;
+    
+    @include media($md) {
+      width: 100%;
+    }
+  }
+  
+  .ant-form-item.form-item-submit-btn {
+    @include media($md) {
+      text-align: center;
+    }
+  }
+
   .sign-up-form-submit-btn {
-    width: 215px;
+    width: 214px;
     height: 55px;
     text-transform: uppercase;
     font-family: Noto Sans, sans-serif;
@@ -21,5 +44,9 @@
     font-size: 12px;
     line-height: 24px;
     color: $primary-text-color;
+    
+    @include media($md) {
+      text-align: center;
+    }
   }
 }

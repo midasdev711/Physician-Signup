@@ -14,7 +14,7 @@ Project is created with:
 * Ant Design version: 3.23.2
 
 ## Setup
-To run this project, install it loccaly using yarn or npm, and navigate to the http://localhost:3000/:
+To run this project, install it loccaly using yarn or npm, and navigate to the http://localhost:3000/
 
 ```
 $ yarn install

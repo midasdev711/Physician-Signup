@@ -2,10 +2,10 @@
 
 .sign-up-info {
   .sign-up-info-img-wrapper {
-    @include flexbox($justify-content: center);
+    max-width: 353.04px;
+    margin: 0 auto;
 
     .sign-up-info-img {
-      width: 353.04px;
       height: 298px;
       background: url("/asset/images/account.svg");
       background-repeat: no-repeat;
@@ -15,7 +15,7 @@
   }
 
   .sign-up-info-title {
-    margin-top: 24px;
+    margin: 24px 0;
     font-family: "Noto Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
