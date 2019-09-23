@@ -1,0 +1,27 @@
+@import "./main.scss";
+
+.sign-up-info {
+  .sign-up-info-img-wrapper {
+    @include flexbox($justify-content: center);
+
+    .sign-up-info-img {
+      width: 353.04px;
+      height: 298px;
+      background: url("/asset/images/account.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  .sign-up-info-title {
+    margin-top: 24px;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: -0.2px;
+    color: $secondary-text-color;
+  }
+}

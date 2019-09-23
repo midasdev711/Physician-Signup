@@ -1,0 +1,48 @@
+@import './main.scss';
+
+.header {
+  padding: 0;
+  background-color: #fff;
+  height: 59px;
+  
+  .header-content {
+    display: grid;
+    grid-template-columns: minmax(auto, 42px) 219px auto 83px minmax(auto, 59px);
+    grid-template-areas:
+      ". header-logo-wrapper . header-contactus-btn .";
+      
+    @include media($sm) {
+      & {
+        // transform: scale(0.85);
+        overflow-x: auto;
+      }
+    }
+    
+    .header-logo-wrapper {
+      grid-area: header-logo-wrapper;
+      padding: 3.8px 3.89px 3.81px;
+      margin-top: 4px;
+      height: 52px;
+
+      .header-logo {
+        background: url('/asset/images/logo.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+      }
+    }
+  
+    .header-contactus-btn {
+      grid-area: header-contactus-btn;
+      padding: 20px 0 15px;
+      height: unset;
+      text-transform: uppercase;
+      font-family: 'Noto Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: left;
+      vertical-align: top;
+    }
+  }
+}

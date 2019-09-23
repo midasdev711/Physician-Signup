@@ -1,0 +1,14 @@
+@import './main.scss';
+
+.layout {
+  height: 100vh;
+  
+  .main-content {
+    background-color: #fff;
+    // height: calc(100vh - 60px);
+  }
+
+  .ant-divider {
+    background: $divider-bgcolor;
+  }
+}

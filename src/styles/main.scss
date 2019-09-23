@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
+$sm: 576px;
+$md: 768px;
+
+$init-primary-color: rgba(0, 0, 0, 0.85);
+$primary-color: #41AAE2;
+
+$divider-bgcolor: #E4E4E9;
+
+$primary-text-color: #8E8E95;
+$secondary-text-color: #606060;
+
+@mixin flexbox($align-items: initial, $justify-content: initial) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin media($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}

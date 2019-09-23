@@ -1,0 +1,260 @@
+@import "./main.scss";
+
+.steps {
+  margin-top: 31px;
+
+  @mixin box(
+    $margin-right: initial,
+    $border-radius: initial,
+    $border-top-left-radius: initial,
+    $border-bottom-left-radius: initial,
+    $padding-right: initial
+  ) {
+    height: 100%;
+    @include flexbox($align-items: center);
+    background: $primary-color;
+    box-shadow: 0px 10px 35px rgba(65, 170, 226, 0.25);
+    margin-right: $margin-right;
+    border-radius: $border-radius;
+    border-top-left-radius: $border-top-left-radius;
+    border-bottom-left-radius: $border-bottom-left-radius;
+    padding-right: $padding-right;
+  }
+
+  @mixin title($color: initial) {
+    height: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: $color;
+  }
+
+  .steps-wrapper {
+    .steps-label-container {
+      display: grid;
+      grid-template-columns: minmax(auto, 100px) auto minmax(auto, 100px);
+      grid-template-rows: 46px;
+      grid-template-areas: ". steps-label-items .";
+      row-gap: 50px;
+
+      @include media($md) {
+        & {
+          // transform: scale(0.85);
+          // overflow-x: auto;
+        }
+      }
+
+      @include media(480px) {
+        & {
+          grid-template-rows: auto;
+        }
+      }
+
+      .steps-label-items {
+        grid-area: steps-label-items;
+
+        .ant-steps {
+          .ant-steps-item-custom.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon {
+            color: #fff;
+          }
+
+          .ant-steps-item-wait .ant-steps-item-icon > .ant-steps-icon {
+            color: $primary-text-color;
+          }
+
+          height: 100%;
+
+          .ant-steps-item.ant-steps-item-process.ant-steps-item-active {
+            @include media(480px) {
+              &:not(:last-child) {
+                margin-right: 0px;
+                margin-bottom: 16px;
+              }
+            }
+
+            .ant-steps-item-container {
+              height: 100%;
+              @include flexbox($align-items: center);
+
+              @include media(480px) {
+                & {
+                  height: 48px;
+                }
+              }
+
+              .ant-steps-item-icon {
+                @include box(
+                  $margin-right: 0px,
+                  $border-radius: 0px,
+                  $border-top-left-radius: 3px,
+                  $border-bottom-left-radius: 3px
+                );
+
+                .ant-steps-icon {
+                  margin-left: 2.78px;
+                  width: 31px;
+                  height: 31px;
+                }
+              }
+
+              .ant-steps-item-content {
+                height: 100%;
+
+                .ant-steps-item-title {
+                  @include title($color: #ffffff);
+
+                  &:after {
+                    top: 23px;
+                    height: 2px;
+                    background: #bfbfbf;
+                  }
+
+                  .title {
+                    @include box(
+                      $border-radius: 3px,
+                      $border-top-left-radius: 0,
+                      $border-bottom-left-radius: 0,
+                      $padding-right: 9.11px
+                    );
+                  }
+                }
+              }
+            }
+          }
+
+          .ant-steps-item.ant-steps-item-wait {
+            @include media(480px) {
+              &:not(:last-child) {
+                margin-right: 0px;
+                margin-bottom: 16px;
+              }
+            }
+
+            .ant-steps-item-container {
+              height: 100%;
+              @include flexbox($align-items: center);
+
+              @include media(480px) {
+                & {
+                  height: 48px;
+                }
+              }
+
+              .ant-steps-item-icon {
+                height: 100%;
+                margin-right: 0px;
+                @include flexbox($align-items: center);
+
+                .ant-steps-icon {
+                  margin-left: 2.78px;
+                  width: 31px;
+                  height: 31px;
+                }
+              }
+
+              .ant-steps-item-content {
+                height: 100%;
+
+                .ant-steps-item-title {
+                  @include title($color: $primary-text-color);
+
+                  &:after {
+                    top: 23px;
+                    height: 2px;
+                    background: #bfbfbf;
+                  }
+
+                  .title {
+                    height: 100%;
+                    @include flexbox($align-items: center);
+                  }
+                }
+              }
+            }
+          }
+
+          .ant-steps-item.ant-steps-item-finish {
+            @include media(480px) {
+              &:not(:last-child) {
+                margin-right: 0px;
+                margin-bottom: 16px;
+              }
+            }
+
+            .ant-steps-item-container {
+              height: 100%;
+              @include flexbox($align-items: center);
+
+              @include media(480px) {
+                & {
+                  height: 48px;
+                }
+              }
+
+              .ant-steps-item-icon {
+                height: 100%;
+                margin-right: 0px;
+                @include flexbox($align-items: center);
+
+                .ant-steps-icon {
+                  margin-left: 2.78px;
+                  width: 31px;
+                  height: 31px;
+                }
+              }
+
+              .ant-steps-item-content {
+                height: 100%;
+
+                .ant-steps-item-title {
+                  @include title($color: $primary-color);
+
+                  &:after {
+                    top: 23px;
+                    height: 2px;
+                  }
+
+                  .title {
+                    height: 100%;
+                    @include flexbox($align-items: center);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .steps-content-container {
+      display: grid;
+      grid-template-columns: minmax(auto, 100px) minmax(200px, auto) minmax(auto, 100px);
+      grid-template-areas: ". steps-content .";
+
+      .steps-content {
+        grid-area: steps-content;
+      }
+    }
+  }
+
+  // .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  //   color: $primary-color;
+  // }
+
+  // .ant-steps-item-process > .ant-steps-item-container >
+  // .ant-steps-item-content > .ant-steps-item-title {
+  //   color: $primary-color;
+  // }
+
+  // .ant-steps-item-finish > .ant-steps-item-container >
+  // .ant-steps-item-content > .ant-steps-item-title {
+  //   color: $primary-color;
+  // }
+
+  // .ant-steps-item-finish > .ant-steps-item-container >
+  // .ant-steps-item-content > .ant-steps-item-title::after {
+  //   background-color: $primary-color;
+  // }
+}
