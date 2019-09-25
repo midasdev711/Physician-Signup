@@ -92,11 +92,11 @@ class SignUpForm extends React.Component {
               rules: [
                 {
                   type: 'email',
-                  message: 'The input is not valid Email!',
+                  message: 'This is not a valid email address',
                 },
                 {
                   required: true,
-                  message: 'Please input your Email!',
+                  message: 'Please input your email',
                 },
               ],
             })(<Input />)}
@@ -106,7 +106,7 @@ class SignUpForm extends React.Component {
               rules: [
                 {
                   required: true,
-                  message: 'Please input your Phone Number!',
+                  message: 'Please provide your mobile number',
                 },
               ],
             })(
@@ -122,7 +122,7 @@ class SignUpForm extends React.Component {
               rules: [
                 {
                   required: true,
-                  message: 'Please input your Password!',
+                  message: 'Please input a password',
                 },
                 {
                   validator: this.validatePassword,
@@ -142,8 +142,8 @@ class SignUpForm extends React.Component {
           </Form.Item>
           <Form.Item style={{ width: '100%', textAlign: 'center' }}>
             <Paragraph className="sign-up-form-terms-conditions">
-              By clicking "Claim Your Account", I agree to <br />
-              <Link to="/terms-conditions">Terms {'&'} Conditions</Link> of signing up.
+              By clicking "Claim Your Account", I agree to the 
+              <a href="https://alemhealth.com/termsofservice"> Terms {'&'} Conditions</a> of signing up.
             </Paragraph>
           </Form.Item>
         </Form>
