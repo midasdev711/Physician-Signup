@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
-import SignUpInfo from './signUpInfo.jsx'
-import SignUpForm from './signUpForm.jsx'
 import StepsWrapper from '../partials/stepsWrapper.jsx'
+import SignUpBoxInfo from './signUpBoxInfo.jsx'
+import SignUpForm from './signUpForm.jsx'
 
 function SignUp({ history }) {
   function signUp(values) {
@@ -20,9 +20,9 @@ function SignUp({ history }) {
   return (
     <div className="sign-up">
       <StepsWrapper current={0}>
-        <Row gutter={124}>
+        <Row>
           <Col xs={24} sm={24} md={12}>
-            <SignUpInfo />
+            <SignUpBoxInfo />
           </Col>
           <Col xs={24} sm={24} md={12}>
             <SignUpForm {...signUpFormProps} />

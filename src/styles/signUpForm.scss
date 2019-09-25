@@ -8,6 +8,9 @@
     @include media($md) {
       width: 100%;
     }
+    
+    margin: 0 auto;
+    margin-bottom: 24px;
   }
   
   .ant-form-item.form-item-email {
@@ -16,6 +19,8 @@
     @include media($md) {
       width: 100%;
     }
+    
+    margin-right: 0;
   }
   
   .ant-form-item.form-item-submit-btn {
@@ -44,9 +49,5 @@
     font-size: 12px;
     line-height: 24px;
     color: $primary-text-color;
-    
-    @include media($md) {
-      text-align: center;
-    }
   }
 }

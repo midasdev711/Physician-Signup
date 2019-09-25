@@ -5,6 +5,8 @@
 
   .main-content {
     background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
     // height: calc(100vh - 60px);
   }
 

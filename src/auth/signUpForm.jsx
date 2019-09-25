@@ -140,7 +140,7 @@ class SignUpForm extends React.Component {
               Claim Your Account
             </Button>
           </Form.Item>
-          <Form.Item {...tailFormItemLayout} >
+          <Form.Item style={{ width: '100%', textAlign: 'center' }}>
             <Paragraph className="sign-up-form-terms-conditions">
               By clicking "Claim Your Account", I agree to <br />
               <Link to="/terms-conditions">Terms {'&'} Conditions</Link> of signing up.
