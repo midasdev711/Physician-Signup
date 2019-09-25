@@ -6,6 +6,7 @@ import './styles/app.css'
 import Layout from './layout/layout.jsx'
 import SignUp from './auth/signUp.jsx'
 import UploadMedicalLicense from './upload/uploadMedicalLicense.jsx'
+import UpdateProfile from './profile/updateProfile.jsx'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Switch>
             <Route path="/signup" component={SignUp} />
             <Route path="/upload/medical-license" component={UploadMedicalLicense} />
+            <Route path="/update/profile" component={UpdateProfile} />
             <Redirect to="/signup" />
           </Switch>
         </BrowserRouter>

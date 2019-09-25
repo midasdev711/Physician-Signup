@@ -25,14 +25,19 @@
       background: url("/assets/images/upload-default.svg");
     }
 
-    .upload-section-img-success {
-      @extend .upload-section-img;
-      background: url("/assets/images/upload-success.svg");
-    }
-
     .upload-section-img-uploading {
       @extend .upload-section-img;
       background: url("/assets/images/upload-uploading.svg");
+    }
+    
+    .upload-section-img-done {
+      @extend .upload-section-img;
+      background: url("/assets/images/upload-done.svg");
+    }
+    
+    .upload-section-img-error {
+      @extend .upload-section-img;
+      // background: url("/assets/images/upload-error.svg");
     }
   }
 
@@ -53,6 +58,10 @@
     @include media($md) {
       margin-right: auto;
       text-align: center;
+    }
+    
+    .ant-btn {
+      margin-left: 25px;
     }
   }
 

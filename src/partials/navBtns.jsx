@@ -7,7 +7,7 @@ import Icon from 'antd/es/icon'
 import '../styles/navBtns.scss'
 
 function NavBtns({
-  showSkipBtn, skipBtnText, onSkipClick,
+  showSkipBtn, skipBtnText, onSkip,
   submitBtnText, showSubmitBtnIcon, onSubmit,
 }) {
   return (
@@ -16,7 +16,7 @@ function NavBtns({
         {
           showSkipBtn && (
             <Col>
-              <Button className="skip-btn" onClick={onSkipClick}>
+              <Button className="skip-btn" onClick={onSkip}>
                 {skipBtnText}
               </Button>
             </Col>
@@ -36,16 +36,14 @@ function NavBtns({
 NavBtns.defaultProps = {
   showSkipBtn: true,
   skipBtnText: 'Skip For Now',
-  onSkipClick: () => { },
   submitBtnText: 'Next',
   showSubmitBtnIcon: true,
-  onSubmit: () => { },
 }
 
 NavBtns.propTypes = {
   showSkipBtn: PropTypes.bool,
   skipBtnText: PropTypes.string,
-  onSkipClick: PropTypes.func,
+  onSkip: PropTypes.func,
   submitBtnText: PropTypes.string,
   showSubmitBtnIcon: PropTypes.bool,
   onSubmit: PropTypes.func,
