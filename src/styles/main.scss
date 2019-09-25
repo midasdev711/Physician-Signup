@@ -11,8 +11,13 @@ $divider-bgcolor: #E4E4E9;
 $primary-text-color: #8E8E95;
 $secondary-text-color: #606060;
 
-@mixin flexbox($align-items: initial, $justify-content: initial) {
+@mixin flexbox(
+  $align-items: initial,
+  $justify-content: initial,
+  $flex-direction: initial,
+) {
   display: flex;
+  flex-direction: $flex-direction;
   align-items: $align-items;
   justify-content: $justify-content;
 }

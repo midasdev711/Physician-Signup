@@ -1,0 +1,24 @@
+@import './main.scss';
+
+@mixin text(
+  $font-size: 12px, $font-weight: normal,
+  $line-height: 30px, $letter-spacing: -0.2px, $color: $secondary-text-color
+) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  color: $color;
+}
+
+.profile-preview-edit-btn {
+  .ant-btn {
+    border: 1.5px solid #15a9e1;
+    border-radius: 3px;
+    padding: 0;
+    width: 62px;
+    color: $primary-color;
+  }
+}
