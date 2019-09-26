@@ -13,12 +13,24 @@
   color: $color;
 }
 
-.profile-preview-edit-btn {
+.profile-preview-btn {
   .ant-btn {
     border: 1.5px solid #15a9e1;
     border-radius: 3px;
     padding: 0;
     width: 62px;
     color: $primary-color;
+  }
+}
+
+.profile-preview-edit-btn {
+  .ant-btn {
+    background: $primary-color;
+    border: 1.5px solid #15A9E1;
+    border-radius: 2px;
+    width: 84px;
+    height: 40px;
+    color: #fff;
+    padding: 0;
   }
 }

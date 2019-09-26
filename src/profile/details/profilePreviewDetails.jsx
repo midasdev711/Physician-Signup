@@ -4,7 +4,7 @@ import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 import Typography from 'antd/es/typography'
 import Button from 'antd/es/button'
-import '../styles/profilePreviewDetails.scss'
+import '../../styles/profilePreviewDetails.scss'
 
 const { Title } = Typography
 
@@ -20,7 +20,7 @@ function ProfilePreviewDetails() {
           </div>
         </Col>
         <Col>
-          <div className="profile-preview-edit-btn" style={{ paddingRight: '8px' }}>
+          <div className="profile-preview-btn" style={{ paddingRight: '8px' }}>
             <Button icon="form">
               Edit
             </Button>

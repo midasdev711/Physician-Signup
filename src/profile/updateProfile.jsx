@@ -1,18 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 // import message from 'antd/es/message'
 import StepsWrapper from '../partials/stepsWrapper.jsx'
-import ProfilePreview from './profilePreview.jsx'
-import ProfilePreviewDetails from './profilePreviewDetails.jsx'
-import ProfilePreviewEducation from './profilePreviewEducation.jsx'
+import ProfilePreview from './preview/profilePreview.jsx'
+import ProfileEditPreview from './preview/profileEditPreview.jsx'
+import ProfilePreviewDetails from './details/profilePreviewDetails.jsx'
+import ProfilePreviewEducation from './education/profilePreviewEducation.jsx'
 import NavBtns from '../partials/navBtns.jsx'
 
 function UpdateProfile({ history }) {
+  const [showPreview, setShowPreview] = useState(true)
+  // const [showDetails, setShowDetails] = useState(true)
+  // const [showEducation, setShowEducation] = useState(true)
+
   function onDone() {
     // history.push('')
+  }
+  
+  const previewProps = {
+    onEdit: () => setShowPreview(false),
+  }
+  
+  const editPreviewProps = {
+    onSave: () => setShowPreview(true),
   }
 
   const navBtnsProps = {
@@ -26,9 +39,13 @@ function UpdateProfile({ history }) {
     <div className="profile">
       <StepsWrapper current={2} contentStyle={{ paddingTop: '39px' }}>
         <React.Fragment>
-          <Row className="profile-content" style={{ maxWidth: '610px', margin: '0 auto' }}>
+          <Row className="profile-content" style={{ maxWidth: '740px', margin: '0 auto' }}>
             <Col xs={24}>
-              <ProfilePreview />
+              {
+                showPreview ? (
+                  <ProfilePreview {...previewProps} />
+                ) : <ProfileEditPreview {...editPreviewProps} />
+              }
             </Col>
             <Col xs={24}>
               <ProfilePreviewDetails />

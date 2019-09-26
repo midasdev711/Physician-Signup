@@ -1,0 +1,18 @@
+@import "./main.scss";
+@import './profileVars.scss';
+
+.profile-preview-edit {
+  padding: 0 21px 21px;
+  border-bottom: 2px solid $primary-color;
+
+  .profile-preview-edit-info {
+    padding: 8px 8px 0 24px;
+    @include flexbox();
+  }
+  
+  // .profile-preview-edit-btn {
+  //   @include media(417px) {
+  //     margin-top: 24px;
+  //   }
+  // }
+}

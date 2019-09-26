@@ -1,27 +1,26 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
-import Icon from 'antd/es/icon'
+// import Icon from 'antd/es/icon'
 import Typography from 'antd/es/typography'
 import Button from 'antd/es/button'
-import '../styles/profilePreview.scss'
+import AvatarUploader from '../../partials/avatarUploader.jsx'
+import '../../styles/profilePreview.scss'
 
 const { Title } = Typography
 
-function ProfilePreview() {
+function ProfilePreview({ onEdit }) {
+  const avatarUploaderProps = {
+  }
+
   return (
     <div className="profile-preview">
-      <Row gutter={24}>
-        <Col xs={24} sm={8}>
-          <div className="profile-preview-avatar">
-            <Icon type="camera" />
-            <Title level={4}>
-              Add Photo
-            </Title>
-          </div>
+      <Row>
+        <Col xs={24} sm={6}>
+          <AvatarUploader {...avatarUploaderProps} />
         </Col>
-        <Col xs={24} sm={16}>
+        <Col xs={24} sm={18}>
           <Row type="flex" justify="space-between" className="profile-preview-info">
             <Col>
               <Title level={4} className="profile-preview-info-fullname">
@@ -43,8 +42,8 @@ function ProfilePreview() {
               </div>
             </Col>
             <Col>
-              <div className="profile-preview-edit-btn">
-                <Button icon="form">
+              <div className="profile-preview-btn">
+                <Button icon="form" onClick={onEdit}>
                   Edit
                 </Button>
               </div>
@@ -58,6 +57,8 @@ function ProfilePreview() {
 
 ProfilePreview.defaultProps = {}
 
-ProfilePreview.propTypes = {}
+ProfilePreview.propTypes = {
+  onEdit: PropTypes.func,
+}
 
 export default ProfilePreview
