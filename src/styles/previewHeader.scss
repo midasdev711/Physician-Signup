@@ -1,0 +1,10 @@
+@import './main.scss';
+@import './profileVars.scss';
+
+.preview-header {
+  .preview-header-title {
+    @include text(
+      $font-weight: 600, $font-size: 16px
+    );
+  }
+}

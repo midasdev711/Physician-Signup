@@ -10,12 +10,13 @@ import EditPreview from './preview/editPreview.jsx'
 import PreviewDetails from './details/previewDetails.jsx'
 import EditPreviewDetails from './details/editPreviewDetails.jsx'
 import PreviewEducation from './education/previewEducation.jsx'
+import EditPreviewEducation from './education/editPreviewEducation.jsx'
 import NavBtns from '../partials/navBtns.jsx'
 
 function UpdateProfile({ history }) {
   const [showPreview, setShowPreview] = useState(true)
   const [showDetails, setShowDetails] = useState(true)
-  // const [showEducation, setShowEducation] = useState(true)
+  const [showEducation, setShowEducation] = useState(true)
 
   function onDone() {
     // history.push('')
@@ -37,6 +38,15 @@ function UpdateProfile({ history }) {
   const editDetailsProps = {
     onSave: () => setShowDetails(true),
     onCancel: () => setShowDetails(true),
+  }
+  
+  const educationProps = {
+    onEdit: () => setShowEducation(false),
+  }
+
+  const editEducationProps = {
+    onSave: () => setShowEducation(true),
+    onCancel: () => setShowEducation(true),
   }
 
   const navBtnsProps = {
@@ -66,7 +76,11 @@ function UpdateProfile({ history }) {
               }
             </Col>
             <Col xs={24}>
-              <PreviewEducation />
+              {
+                showEducation ? (
+                  <PreviewEducation {...educationProps} />
+                ) : <EditPreviewEducation {...editEducationProps} />
+              }
             </Col>
           </Row>
           <div>

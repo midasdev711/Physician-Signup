@@ -1,13 +1,7 @@
-@import './main.scss';
-@import './profileVars.scss';
+// @import './main.scss';
+// @import './profileVars.scss';
 
 .preview-education {
   padding: 21px;
-  height: 186px;
-  
-  .preview-education-title {
-    @include text(
-      $font-weight: 600, $font-size: 16px
-    );
-  }
+  min-height: 186px;
 }

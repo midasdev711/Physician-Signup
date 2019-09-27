@@ -1,0 +1,49 @@
+@import "./main.scss";
+@import "./profileVars.scss";
+
+.education-list {
+  // max-width: 300px;
+
+  .education-list-item {
+
+    &:not(:last-child) {
+      margin-bottom: 19px;
+    }
+
+    .ant-tag {
+      padding: 7px;
+      margin-right: 0;
+      @include flexbox(
+        $align-items: center,
+        $justify-content: space-between
+      );
+      max-width: 300px;
+      background: #EFEFF3;
+      
+      &.preview-mode {
+        background: initial;
+        border: initial;
+      }
+
+      div {
+        max-width: 250px;
+
+        .education-list-item-quals {
+          margin: 0;
+          @include text(
+            $font-size: 16px, $font-weight: 600, $line-height: 28px,
+            $letter-spacing: 0.304px
+          );
+        }
+        
+        .education-list-item-school {
+          margin: 0;
+          @include text(
+            $font-size: 16px, $line-height: 24px,
+            $letter-spacing: -0.256px
+          );
+        }
+      }
+    }
+  }
+}

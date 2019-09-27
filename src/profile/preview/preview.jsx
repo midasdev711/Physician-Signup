@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
-// import Icon from 'antd/es/icon'
 import Typography from 'antd/es/typography'
-import Button from 'antd/es/button'
+import PreviewBtns from '../../partials/previewBtns.jsx'
 import AvatarUploader from '../../partials/avatarUploader.jsx'
 import '../../styles/preview.scss'
 
@@ -12,6 +11,11 @@ const { Title } = Typography
 
 function Preview({ onEdit }) {
   const avatarUploaderProps = {
+  }
+  
+  const previewBtns = {
+    isEdit: false,
+    onEdit,
   }
 
   return (
@@ -42,11 +46,7 @@ function Preview({ onEdit }) {
               </div>
             </Col>
             <Col>
-              <div className="preview-edit-btn">
-                <Button icon="form" onClick={onEdit}>
-                  Edit
-                </Button>
-              </div>
+              <PreviewBtns {...previewBtns} />
             </Col>
           </Row>
         </Col>
@@ -59,7 +59,6 @@ Preview.defaultProps = {}
 
 Preview.propTypes = {
   onEdit: PropTypes.func,
-  onCancel: PropTypes.func,
 }
 
 export default Preview

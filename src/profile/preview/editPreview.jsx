@@ -2,13 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
-// import Typography from 'antd/es/typography'
-import Button from 'antd/es/button'
+import PreviewBtns from '../../partials/previewBtns.jsx'
 import AvatarUploader from '../../partials/avatarUploader.jsx'
 import ProfileEditForm from './editForm.jsx'
 import '../../styles/editPreview.scss'
-
-// const { Title } = Typography
 
 function EditPreview({ onSave, onCancel }) {
   const avatarUploaderProps = {
@@ -18,6 +15,12 @@ function EditPreview({ onSave, onCancel }) {
   
   const profileEditForm = {
     onSubmit: () => {},
+  }
+  
+  const previewBtns = {
+    isEdit: true,
+    onSave,
+    onCancel,
   }
 
   return (
@@ -32,16 +35,7 @@ function EditPreview({ onSave, onCancel }) {
               <ProfileEditForm {...profileEditForm} />
             </Col>
             <Col>
-              <div className="preview-save-btn">
-                <Button onClick={onSave}>
-                  Save
-                </Button>
-              </div>
-              <div className="preview-cancel-btn">
-                <Button onClick={onCancel}>
-                  Cancel
-                </Button>
-              </div>
+              <PreviewBtns {...previewBtns} />
             </Col>
           </Row>
         </Col>

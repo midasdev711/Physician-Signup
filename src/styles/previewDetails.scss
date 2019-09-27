@@ -5,12 +5,6 @@
   padding: 21px;
   border-bottom: 2px solid $primary-color;
   
-  .preview-details-title {
-    @include text(
-      $font-weight: 600, $font-size: 16px
-    );
-  }
-  
   .preview-details-label {
     @include text(
       $font-size: 14px, $line-height: 14px,

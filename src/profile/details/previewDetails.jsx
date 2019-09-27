@@ -2,31 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
-import Typography from 'antd/es/typography'
-import Button from 'antd/es/button'
+import PreviewHeader from '../../partials/previewHeader.jsx'
 import '../../styles/previewDetails.scss'
 
-const { Title } = Typography
-
 function PreviewDetails({ onEdit }) {
+  const previewHeader = {
+    title: 'Additional Details',
+    isEdit: false,
+    onEdit,
+  }
+
   return (
     <div className="preview-details">
-      <Row gutter={24} type="flex" justify="space-between">
-        <Col style={{ flex: 1 }}>
-          <div style={{ borderBottom: '1px solid #D8D8D8' }}>
-            <Title level={4} className="preview-details-title">
-              Additional Details
-            </Title>
-          </div>
-        </Col>
-        <Col>
-          <div className="preview-edit-btn">
-            <Button icon="form" onClick={onEdit}>
-              Edit
-            </Button>
-          </div>
-        </Col>
-      </Row>
+      <PreviewHeader {...previewHeader} />
       <div className="preview-details-email">
         <div className="preview-details-label">
           Email Address
