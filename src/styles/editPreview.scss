@@ -1,0 +1,12 @@
+@import "./main.scss";
+@import './profileVars.scss';
+
+.preview-edit {
+  padding: 0 21px 21px;
+  border-bottom: 2px solid $primary-color;
+
+  .preview-edit-info {
+    padding: 8px 0 0 24px;
+    @include flexbox();
+  }
+}

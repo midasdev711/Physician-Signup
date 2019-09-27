@@ -33,10 +33,10 @@
   @include flexbox($justify-content: center);
 
   @include media($md) {
-    & {
-      // transform: scale(0.85);
-      // overflow-x: auto;
-    }
+    // & {
+    //   // transform: scale(0.85);
+    //   // overflow-x: auto;
+    // }
   }
 
   .steps-label-items {

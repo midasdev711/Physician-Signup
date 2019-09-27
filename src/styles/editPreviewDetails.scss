@@ -1,11 +1,11 @@
 @import './main.scss';
 @import './profileVars.scss';
 
-.profile-preview-education {
+.preview-edit-details {
   padding: 21px;
-  height: 186px;
+  border-bottom: 2px solid $primary-color;
   
-  .profile-preview-education-title {
+  .preview-edit-details-title {
     @include text(
       $font-weight: 600, $font-size: 16px
     );

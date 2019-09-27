@@ -6,43 +6,43 @@ import Col from 'antd/es/col'
 import Typography from 'antd/es/typography'
 import Button from 'antd/es/button'
 import AvatarUploader from '../../partials/avatarUploader.jsx'
-import '../../styles/profilePreview.scss'
+import '../../styles/preview.scss'
 
 const { Title } = Typography
 
-function ProfilePreview({ onEdit }) {
+function Preview({ onEdit }) {
   const avatarUploaderProps = {
   }
 
   return (
-    <div className="profile-preview">
+    <div className="preview">
       <Row>
         <Col xs={24} sm={6}>
           <AvatarUploader {...avatarUploaderProps} />
         </Col>
         <Col xs={24} sm={18}>
-          <Row type="flex" justify="space-between" className="profile-preview-info">
+          <Row type="flex" justify="space-between" className="preview-info">
             <Col>
-              <Title level={4} className="profile-preview-info-fullname">
+              <Title level={4} className="preview-info-fullname">
                 Ivan Pavlov
               </Title>
-              <Title level={4} className="profile-preview-info-phone">
+              <Title level={4} className="preview-info-phone">
                 +123 456 789 1098
               </Title>
-              <div className="profile-preview-info-skills">
-                <div className="profile-preview-info-skills-item">
+              <div className="preview-info-skills">
+                <div className="preview-info-skills-item">
                   SPINAL CORD INJURY SPECIALIST
                 </div>
-                <div className="profile-preview-info-skills-item">
+                <div className="preview-info-skills-item">
                   OCCUPATIONAL MEDICINE SPECIALIST
                 </div>
-                <div className="profile-preview-info-skills-item">
+                <div className="preview-info-skills-item">
                   GENERAL MEDICINE
                 </div>
               </div>
             </Col>
             <Col>
-              <div className="profile-preview-btn">
+              <div className="preview-edit-btn">
                 <Button icon="form" onClick={onEdit}>
                   Edit
                 </Button>
@@ -55,10 +55,11 @@ function ProfilePreview({ onEdit }) {
   )
 }
 
-ProfilePreview.defaultProps = {}
+Preview.defaultProps = {}
 
-ProfilePreview.propTypes = {
+Preview.propTypes = {
   onEdit: PropTypes.func,
+  onCancel: PropTypes.func,
 }
 
-export default ProfilePreview
+export default Preview

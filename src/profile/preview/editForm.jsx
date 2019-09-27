@@ -31,7 +31,7 @@ const addSkillStyle = {
   cursor: 'pointer',
 }
 
-class ProfileEditForm extends React.Component {
+class EditForm extends React.Component {
   state = {
     skills: ['Spinal cord injury specialist', 'Occupational medicine specialist', 'General medicine'],
     inputVisible: false,
@@ -145,7 +145,7 @@ class ProfileEditForm extends React.Component {
             )}
           </Form.Item>
           <Form.Item
-            // style={{ display: inputVisible ? 'initial' : 'none' }}
+            style={{ margin: 0, padding: 0 }}
             /* {...formItemLayout} */
             label=""
             validateStatus=""
@@ -206,7 +206,7 @@ class ProfileEditForm extends React.Component {
   }
 }
 
-ProfileEditForm.propTypes = {
+EditForm.propTypes = {
   form: PropTypes.shape({
     getFieldDecorator: PropTypes.func,
     validateFieldsAndScroll: PropTypes.func,
@@ -216,4 +216,4 @@ ProfileEditForm.propTypes = {
   onSubmit: PropTypes.func,
 }
 
-export default Form.create({ name: 'profileEditForm' })(ProfileEditForm)
+export default Form.create({ name: 'editForm' })(EditForm)

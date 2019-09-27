@@ -1,27 +1,31 @@
 @import "./main.scss";
 @import './profileVars.scss';
 
-.profile-preview {
+.preview {
   padding: 0 21px 21px;
   border-bottom: 2px solid $primary-color;
 
-  .profile-preview-info {
-    padding: 8px 8px 0 24px;
+  .preview-info {
+    padding: 8px 0 0 24px;
+    
+    @include media($sm) {
+      padding: 8px 0 0;
+    }
 
-    .profile-preview-info-fullname {
+    .preview-info-fullname {
       @include text($font-size: 18px);
       margin: 0;
     }
 
-    .profile-preview-info-phone {
+    .preview-info-phone {
       @include text($font-size: 14px, $font-weight: normal);
       margin: 0;
     }
     
-    .profile-preview-info-skills {
+    .preview-info-skills {
       margin-top: 13px;
       
-      .profile-preview-info-skills-item {
+      .preview-info-skills-item {
         @include text(
           $font-weight: 500, $line-height: 16px, $letter-spacing: 0.47px
         );
@@ -34,7 +38,7 @@
     }
   }
   
-  .profile-preview-btn {
+  .preview-edit-btn {
     @include media(417px) {
       margin-top: 24px;
     }

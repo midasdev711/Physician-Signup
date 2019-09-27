@@ -5,27 +5,38 @@ import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 // import message from 'antd/es/message'
 import StepsWrapper from '../partials/stepsWrapper.jsx'
-import ProfilePreview from './preview/profilePreview.jsx'
-import ProfileEditPreview from './preview/profileEditPreview.jsx'
-import ProfilePreviewDetails from './details/profilePreviewDetails.jsx'
-import ProfilePreviewEducation from './education/profilePreviewEducation.jsx'
+import Preview from './preview/preview.jsx'
+import EditPreview from './preview/editPreview.jsx'
+import PreviewDetails from './details/previewDetails.jsx'
+import EditPreviewDetails from './details/editPreviewDetails.jsx'
+import PreviewEducation from './education/previewEducation.jsx'
 import NavBtns from '../partials/navBtns.jsx'
 
 function UpdateProfile({ history }) {
   const [showPreview, setShowPreview] = useState(true)
-  // const [showDetails, setShowDetails] = useState(true)
+  const [showDetails, setShowDetails] = useState(true)
   // const [showEducation, setShowEducation] = useState(true)
 
   function onDone() {
     // history.push('')
   }
-  
+
   const previewProps = {
     onEdit: () => setShowPreview(false),
   }
-  
+
   const editPreviewProps = {
     onSave: () => setShowPreview(true),
+    onCancel: () => setShowPreview(true),
+  }
+
+  const detailsProps = {
+    onEdit: () => setShowDetails(false),
+  }
+
+  const editDetailsProps = {
+    onSave: () => setShowDetails(true),
+    onCancel: () => setShowDetails(true),
   }
 
   const navBtnsProps = {
@@ -43,15 +54,19 @@ function UpdateProfile({ history }) {
             <Col xs={24}>
               {
                 showPreview ? (
-                  <ProfilePreview {...previewProps} />
-                ) : <ProfileEditPreview {...editPreviewProps} />
+                  <Preview {...previewProps} />
+                ) : <EditPreview {...editPreviewProps} />
               }
             </Col>
             <Col xs={24}>
-              <ProfilePreviewDetails />
+              {
+                showDetails ? (
+                  <PreviewDetails {...detailsProps} />
+                ) : <EditPreviewDetails {...editDetailsProps} />
+              }
             </Col>
             <Col xs={24}>
-              <ProfilePreviewEducation />
+              <PreviewEducation />
             </Col>
           </Row>
           <div>
