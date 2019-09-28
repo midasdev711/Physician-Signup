@@ -27,3 +27,18 @@ $secondary-text-color: #606060;
     @content;
   }
 }
+
+@mixin text(
+  $font-size: 12px, $font-weight: normal,
+  $line-height: 30px, $letter-spacing: -0.2px, $color: $secondary-text-color,
+  $text-transform: initial
+) {
+  font-family: "Noto Sans", sans-serif;
+  font-style: normal;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+  color: $color;
+  text-transform: $text-transform;
+}

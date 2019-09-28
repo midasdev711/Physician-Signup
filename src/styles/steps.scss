@@ -41,13 +41,13 @@
 
   .steps-label-items {
     margin: 31px 24px 0;
-    width: 900px;
-    height: 46px;
+    width: 825px;
+    min-height: 46px;
 
     @include media(480px) {
       & {
         width: auto;
-        height: auto;
+        // height: auto;
       }
     }
 

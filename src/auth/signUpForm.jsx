@@ -1,163 +1,81 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
-import Form from 'antd/es/form'
-import Input from 'antd/es/input'
-// import Select from 'antd/es/select'
+import { withRouter } from 'react-router-dom'
+import { connect, Field } from 'formik'
 import Button from 'antd/es/button'
-// import Icon from 'antd/es/icon'
 import Typography from 'antd/es/typography'
+import FieldLabel from '../partials/fieldLabel.jsx'
+import CustomInputComponent from '../partials/formik/customInputComponent.jsx'
 import '../styles/signUpForm.scss'
 
 const { Paragraph } = Typography
 
-// const { Option } = Select
+function SignUpForm({ history, formik }) {
 
-class SignUpForm extends React.Component {
-  state = {}
+  function signUp() {
+    formik.validateForm().then((errors) => {
+      const errorKeys = Object.keys(errors)
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        // console.log('Received values of form: ', values)
-        this.props.onSubmit(values)
+      if (errorKeys.length > 0) {
+        const touched = errorKeys.reduce((acc, key) => {
+          acc[key] = !!errors[key]
+          return acc
+        }, {})
+        formik.setTouched(touched)
+      } else {
+        history.push('/upload/medical-license')
       }
     })
   }
 
-  validatePassword = (rule, value, callback) => {
-    if (value) {
-      if (!/[a-z]/g.test(value)) { // Validate lowercase letters
-        callback('Your Password should have at least one lowercase letter!')
-      } else if (!/[A-Z]/g.test(value)) { // Validate capital letters
-        callback('Your Password should have at least one uppercase letter!')
-      } else if (!/[0-9]/g.test(value)) { // Validate numbers
-        callback('Your Password should have at least one number!')
-      } else if (!(value.length >= 8)) { // Validate length
-        callback('Your Password should have at least eight characters!')
-      }
-    }
-
-    callback()
-  }
-
-  render() {
-    // console.log('signUpForm props', this.props)
-    const { getFieldDecorator } = this.props.form
-
-    // const formItemLayout = {
-    //   labelCol: {
-    //     xs: { span: 24 },
-    //     sm: { span: 20 },
-    //   },
-    //   wrapperCol: {
-    //     xs: { span: 24 },
-    //     sm: { span: 20 },
-    //   },
-    // }
-
-    const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-        },
-      },
-    }
-
-    // const prefixSelector = getFieldDecorator('prefix', {
-    //   initialValue: '+123 45',
-    // })(
-    //   <Select style={{ width: 100 }}>
-    //     {/* <Option value="86">+86</Option>
-    //     <Option value="87">+87</Option> */}
-    //   </Select>,
-    // )
-
-    return (
-      <div className="sign-up-form">
-        <Form layout="vertical" /* {...formItemLayout} */ onSubmit={this.handleSubmit}>
-          <Form.Item label="Full Name" validateStatus="">
-            {getFieldDecorator('fullName', {
-              rules: [{ required: true, message: 'Please input your Full Name!' }],
-            })(
-              <Input
-              // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              // placeholder="Full Name"
-              />,
-            )}
-          </Form.Item>
-          <Form.Item label="Email Address" validateStatus="" className="form-item-email">
-            {getFieldDecorator('email', {
-              rules: [
-                {
-                  type: 'email',
-                  message: 'This is not a valid email address',
-                },
-                {
-                  required: true,
-                  message: 'Please input your email',
-                },
-              ],
-            })(<Input />)}
-          </Form.Item>
-          <Form.Item label="Phone Number" validateStatus="">
-            {getFieldDecorator('phone', {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please provide your mobile number',
-                },
-              ],
-            })(
-              <Input
-                // style={{ width: '100%' }}
-                type="number"
-              // addonBefore={prefixSelector}
-              />
-            )}
-          </Form.Item>
-          <Form.Item label="Password" hasFeedback validateStatus="">
-            {getFieldDecorator('password', {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please input a password',
-                },
-                {
-                  validator: this.validatePassword,
-                },
-              ],
-            })(
-              <Input.Password
-              // prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              // placeholder="Enter a password"
-              />
-            )}
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout} className="form-item-submit-btn">
-            <Button type="primary" htmlType="submit" className="sign-up-form-submit-btn">
-              Claim Your Account
-            </Button>
-          </Form.Item>
-          <Form.Item style={{ width: '100%', textAlign: 'center' }}>
-            <Paragraph className="sign-up-form-terms-conditions">
-              By clicking "Claim Your Account", I agree to the 
-              <a href="https://alemhealth.com/termsofservice"> Terms {'&'} Conditions</a> of signing up.
-            </Paragraph>
-          </Form.Item>
-        </Form>
+  return (
+    <div className="sign-up-form">
+      <FieldLabel label="Full Name">
+        <Field
+          name="fullName"
+          component={CustomInputComponent}
+        />
+      </FieldLabel>
+      <FieldLabel label="Email Address" maxWidth={293}>
+        <Field
+          name="email"
+          component={CustomInputComponent}
+        />
+      </FieldLabel>
+      <FieldLabel label="Phone Number">
+        <Field
+          type="number"
+          name="phone"
+          component={CustomInputComponent}
+        />
+      </FieldLabel>
+      <FieldLabel label="Password">
+        <Field
+          type="password"
+          name="password"
+          component={CustomInputComponent}
+        />
+      </FieldLabel>
+      <div className="sign-up-form-submit-btn">
+        <Button type="primary" onClick={signUp}>
+          Claim My Account
+        </Button>
       </div>
-    )
-  }
+      <div className="sign-up-form-terms-conditions">
+        <Paragraph>
+          By clicking "Claim My Account", I agree to the 
+          <a href="https://alemhealth.com/termsofservice"> Terms {'&'} Conditions</a> of signing up.
+        </Paragraph>
+      </div>
+    </div>
+  )
 }
 
 SignUpForm.propTypes = {
-  form: PropTypes.shape({
-    getFieldDecorator: PropTypes.func,
-    validateFieldsAndScroll: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }),
-  onSubmit: PropTypes.func,
+  formik: PropTypes.object,
 }
 
-export default Form.create({ name: 'signUp' })(SignUpForm)
+export default connect(withRouter(SignUpForm))

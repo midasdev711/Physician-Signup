@@ -1,0 +1,25 @@
+@import './main.scss';
+
+.field-label {
+  
+  .ant-form-item {
+    max-width: 214px;
+    margin-bottom: 34px;
+    
+    @include media($md) {
+      max-width: initial !important;
+    }
+    
+    .ant-form-item-label {
+      height: 22px;
+      @include text(
+        $line-height: 22px, $letter-spacing: 0.02em, $text-transform: capitalize
+      );
+      margin-bottom: 2px;
+    }
+    
+    .ant-form-item-control {
+      line-height: initial;
+    }
+  }
+}

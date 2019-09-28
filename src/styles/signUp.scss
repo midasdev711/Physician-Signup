@@ -1,0 +1,13 @@
+@import "./main.scss";
+
+.sign-up {
+  // .sign-up-box-info-col {}
+  
+  .sign-up-form-col {
+    padding-left: 81px;
+    
+    @include media($md) {
+      padding-left: 0;
+    }
+  }
+}

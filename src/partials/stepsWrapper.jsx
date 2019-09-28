@@ -5,7 +5,7 @@ import Col from 'antd/es/col'
 import Steps from '../partials/steps.jsx'
 
 const style = {
-  width: '900px',
+  width: '825px',
   padding: '53px 24px 24px',
 }
 

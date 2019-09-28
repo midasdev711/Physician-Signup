@@ -5,7 +5,10 @@
   .sign-up-box-info-img-wrapper {
     max-width: 354px;
     height: 298px;
-    margin: 0 auto;
+
+    @include media($sm) {
+      margin: 0 auto;
+    }
 
     .sign-up-box-info-img {
       background: url('/assets/images/account.svg');
@@ -18,6 +21,12 @@
   }
   
   .ant-typography {
+    max-width: 371px;
+    
+    @include media($sm) {
+      margin: 0 auto;
+    }
+
     .sign-up-box-info-title {
       margin: 24px 0;
       font-family: "Noto Sans", sans-serif;
