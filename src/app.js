@@ -18,7 +18,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('This is not a valid Email Address')
     .required('Please input your Email Address'),
-  phone: Yup.number()
+  phone: Yup.string()
     .required('Please provide your Mobile Number'),
   password: Yup.string()
     .matches(
@@ -33,6 +33,21 @@ const initialValues = {
   email: '',
   phone: '',
   password: '',
+  medicalLicense: null,
+  avatar: '',
+  skills: [],
+
+  // fullName: 'Ivan Pavlov',
+  // email: 'ivan.pavlov@gmail.com',
+  // phone: '0732216860',
+  // password: '12345678Yt',
+  // medicalLicense: null,
+  // avatar: '',
+  // skills: [
+  //   'Spinal Cord Injury Specialist',
+  //   'Occupational Medicine Specialist',
+  //   'General Medicine',
+  // ],
 }
 
 function App() {

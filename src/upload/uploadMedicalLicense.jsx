@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'formik'
 import { withRouter } from 'react-router-dom'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
@@ -9,7 +10,7 @@ import UploadBoxInfo from './uploadBoxInfo.jsx'
 import UploadSection from './uploadSection.jsx'
 import NavBtns from '../partials/navBtns.jsx'
 
-function UploadMedicalLicense({ history }) {
+function UploadMedicalLicense({ history, formik }) {
   const [fileList, setFileList] = useState([])
   
   function beforeUpload(file) {
@@ -30,12 +31,16 @@ function UploadMedicalLicense({ history }) {
     }
 
     if (info.file.status === 'done') {
-      setFileList([...info.fileList.slice(-1)])
+      const files = info.fileList.slice(-1)
+
+      setFileList([...files])
+      formik.setFieldValue('medicalLicense', files[0])
     }
   }
   
   function onRemove() {
     setFileList([])
+    formik.setFieldValue('medicalLicense', null)
   }
   
   function onNext() {
@@ -63,10 +68,10 @@ function UploadMedicalLicense({ history }) {
     <div className="upload">
       <StepsWrapper current={1} contentStyle={{ paddingTop: '50px' }}>
         <Row>
-          <Col xs={24} sm={24} md={12}>
+          <Col xs={24} sm={12}>
             <UploadBoxInfo />
           </Col>
-          <Col xs={24} sm={24} md={12}>
+          <Col xs={24} sm={12}>
             <UploadSection {...uploadSectionProps} />
           </Col>
           <Col xs={24}>
@@ -82,6 +87,7 @@ UploadMedicalLicense.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
+  formik: PropTypes.object,
 }
 
-export default withRouter(UploadMedicalLicense)
+export default connect(withRouter(UploadMedicalLicense))

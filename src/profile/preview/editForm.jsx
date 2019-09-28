@@ -1,219 +1,138 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-// import { Link } from 'react-router-dom'
-import Form from 'antd/es/form'
+import { Field, FieldArray } from 'formik'
+import Row from 'antd/es/row'
+import Col from 'antd/es/col'
 import Input from 'antd/es/input'
 import Tag from 'antd/es/tag'
 import Tooltip from 'antd/es/tooltip'
-// import Select from 'antd/es/select'
-// import Button from 'antd/es/button'
 import Icon from 'antd/es/icon'
+import FieldLabel from '../../partials/fieldLabel.jsx'
+import CustomInputComponent from '../../partials/formik/customInputComponent.jsx'
 
-// const { Option } = Select
-
-const tagStyle = {
-  marginBottom: '8px',
-  display: 'flex',
-  alignItems: 'center',
-  height: '32px',
-  justifyContent: 'space-between',
-  textTransform: 'uppercase',
-}
-
-const addSkillStyle = {
-  background: '#fff',
-  borderStyle: 'dashed',
-  height: '32px',
-  width: '81px',
-  alignItems: 'center',
+const style = {
   display: 'flex',
   justifyContent: 'space-between',
-  cursor: 'pointer',
+  alignItems: 'center',
+  height: '32px',
 }
 
-class EditForm extends React.Component {
-  state = {
-    skills: ['Spinal cord injury specialist', 'Occupational medicine specialist', 'General medicine'],
-    inputVisible: false,
+const styles = {
+  tag: {
+    ...style,
+    marginBottom: '8px',
+    textTransform: 'uppercase',
+  },
+  addSkill: {
+    ...style,
+    background: '#fff',
+    borderStyle: 'dashed',
+    width: '81px',
+    cursor: 'pointer',
+  },
+}
+
+function EditForm() {
+  const [newSkill, setNewSkill] = useState('')
+  const [inputVisible, setInputVisible] = useState(false)
+
+  function showInput() {
+    setInputVisible(true)
   }
 
-  saveInputRef = input => (this.input = input)
-
-  showInput = () => {
-    this.setState({ inputVisible: true }, () => this.input.focus())
-  }
-  
-  onRemoveTag = removedTag => {
-    const skills = this.state.skills.filter(tag => tag !== removedTag)
-
-    this.setState({ skills })
+  function onChange(e) {
+    const value = e.target.value
+    setNewSkill(value)
   }
 
-  onInputConfirm = () => {
-    const { form: { getFieldValue, setFieldsValue } } = this.props
-    const inputValue = getFieldValue('skill')
+  function onInputConfirm(skills, push) {
 
-    let { skills } = this.state
-
-    if (inputValue && skills.indexOf(inputValue) === -1) {
-      skills = [...skills, inputValue]
+    if (newSkill && skills.indexOf(newSkill) === -1) {
+      push(newSkill)
     }
 
-    this.setState({
-      skills,
-      inputVisible: false,
-    }, () => setFieldsValue({ skill: '' }))
+    setInputVisible(false)
+    setNewSkill('')
   }
 
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        // console.log('Received values of form: ', values)
-        this.props.onSubmit(values)
-      }
-    })
-  }
+  return (
+    <div className="profile-edit-form">
+      <Row gutter={24}>
+        <Col xs={24} sm={12}>
+          <FieldLabel label="Full Name">
+            <Field
+              name="fullName"
+              component={CustomInputComponent}
+            />
+          </FieldLabel>
+        </Col>
+        <Col xs={24} sm={12}>
+          <FieldLabel label="Phone Number">
+            <Field
+              name="phone"
+              component={CustomInputComponent}
+            />
+          </FieldLabel>
+        </Col>
+      </Row>
+      <div>
+        <FieldArray
+          name="skills"
+          render={({ form: { values: { skills } }, remove, push }) => (
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              {
+                skills && skills.length > 0 && skills.map((skill, index) => {
+                  const isLongTag = skill.length > 20
 
-  render() {
-    // console.log('ProfileEditForm props', this.props)
-    const { getFieldDecorator } = this.props.form
-    const { inputVisible, skills } = this.state
-
-    // const formItemLayout = {
-    //   labelCol: {
-    //     // xs: { span: 12 },
-    //     // sm: { span: 12 },
-    //   },
-    //   wrapperCol: {
-    //     // xs: { span: 24 },
-    //     // sm: { span: 24 },
-    //   },
-    // }
-
-    // const prefixSelector = getFieldDecorator('prefix', {
-    //   initialValue: '+123 45',
-    // })(
-    //   <Select style={{ width: 100 }}>
-    //     {/* <Option value="86">+86</Option>
-    //     <Option value="87">+87</Option> */}
-    //   </Select>,
-    // )
-
-    return (
-      <div className="profile-edit-form">
-        <Form layout="vertical" onSubmit={this.onSubmit}>
-          <Form.Item
-            style={{ marginBottom: 0 }}
-            /* {...formItemLayout} */
-            label="Full Name"
-            validateStatus=""
-          >
-            {getFieldDecorator('fullName', {
-              rules: [{
-                required: true,
-                message: 'Please input your Full Name!',
-              }],
-            })(
-              <Input
-              // size="small"
-              // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              // placeholder="Full Name"
-              />,
-            )}
-          </Form.Item>
-          <Form.Item
-            // style={{ marginBottom: 0 }}
-            /* {...formItemLayout} */
-            label="Phone Number"
-            validateStatus=""
-          >
-            {getFieldDecorator('phone', {
-              rules: [
-                {
-                  required: true,
-                  message: 'Please provide your mobile number',
-                },
-              ],
-            })(
-              <Input
-                // style={{ width: '100%' }}
-                // size="small"
-                type="number"
-                // addonBefore={prefixSelector}
-              />
-            )}
-          </Form.Item>
-          <Form.Item
-            style={{ margin: 0, padding: 0 }}
-            /* {...formItemLayout} */
-            label=""
-            validateStatus=""
-          >
-            {getFieldDecorator('skill', {
-              // rules: [],
-            })(
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                {
-                  skills.map((tag) => {
-                    const isLongTag = tag.length > 20
-
-                    const tagElem = (
-                      <Tag
-                        style={tagStyle}
-                        key={tag}
-                        closable
-                        onClose={() => this.onRemoveTag(tag)}
-                      >
-                        {isLongTag ? `${tag.slice(0, 20)}...` : tag}
-                      </Tag>
-                    )
-
-                    return isLongTag ? (
-                      <Tooltip title={tag} key={tag}>
-                        {tagElem}
-                      </Tooltip>
-                    ) : (
-                      tagElem
-                    )
-                  })
-                }
-                {
-                  inputVisible && (
-                    <Input
-                      ref={this.saveInputRef}
-                      type="text"
-                      // size="small"
-                      style={{ width: 214 }}
-                      onBlur={this.onInputConfirm}
-                      onPressEnter={this.onInputConfirm}
-                    />
-                  )
-                }
-                {
-                  !inputVisible && (
-                    <Tag style={addSkillStyle} onClick={this.showInput}>
-                      <Icon type="plus" /> Add Skill
+                  const tagElem = (
+                    <Tag
+                      style={styles.tag}
+                      key={index}
+                      closable
+                      onClose={() => remove(index)}
+                    >
+                      {isLongTag ? `${skill.slice(0, 20)}...` : skill}
                     </Tag>
                   )
-                }
-              </div>
-            )}
-          </Form.Item>
-        </Form>
+
+                  return isLongTag ? (
+                    <Tooltip title={skill} key={index}>
+                      {tagElem}
+                    </Tooltip>
+                  ) : (
+                    tagElem
+                  )
+                })
+              }
+              {
+                inputVisible && (
+                  <Input
+                    type="text"
+                    autoFocus
+                    style={{ width: 214 }}
+                    onChange={onChange}
+                    onBlur={() => onInputConfirm(skills, push)}
+                    onPressEnter={() => onInputConfirm(skills, push)}
+                  />
+                )
+              }
+              {
+                !inputVisible && (
+                  <Tag style={styles.addSkill} onClick={showInput}>
+                    <Icon type="plus" /> Add Skill
+                  </Tag>
+                )
+              }
+            </div>
+          )}
+        />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 EditForm.propTypes = {
-  form: PropTypes.shape({
-    getFieldDecorator: PropTypes.func,
-    validateFieldsAndScroll: PropTypes.func,
-    getFieldValue: PropTypes.func,
-    setFieldsValue: PropTypes.func,
-  }),
   onSubmit: PropTypes.func,
 }
 
-export default Form.create({ name: 'editForm' })(EditForm)
+export default EditForm

@@ -34,10 +34,9 @@ function beforeUpload(file) {
 }
 
 function AvatarUploader({
-  isEdit, onSave, iconType, label,
+  isEdit, avatarUrl, onSave, iconType, label,
 }) {
   const [loading, setLoading] = useState(false)
-  const [imageUrl, setImageUrl] = useState('')
 
   function onChange(info) {
     if (info.file.status === 'uploading') {
@@ -47,9 +46,9 @@ function AvatarUploader({
 
     if (info.file.status === 'done') {
       // Get this url from response in real world.
-      getBase64(info.file.originFileObj, (imageUrl) => {
+      getBase64(info.file.originFileObj, (imgUrl) => {
         setLoading(false)
-        setImageUrl(imageUrl)
+        onSave(imgUrl)
       })
     }
   }
@@ -64,7 +63,7 @@ function AvatarUploader({
   const uploadProps = {
     name: 'avatar',
     listType: 'picture-card',
-    className: `avatar-uploader edit-mode ${imageUrl ? 'hasImg' : ''}`,
+    className: `avatar-uploader edit-mode ${avatarUrl ? 'hasImg' : ''}`,
     showUploadList: false,
     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     beforeUpload,
@@ -74,10 +73,18 @@ function AvatarUploader({
   if (!isEdit) {
     return (
       <div className="avatar-uploader preview-mode">
-        <Icon type={iconType} />
-        <Title level={4}>
-          {label}
-        </Title>
+        {
+          avatarUrl ? (
+            <img src={avatarUrl} alt="avatar" />
+          ) : (
+            <React.Fragment>
+              <Icon type={iconType} />
+              <Title level={4}>
+                {label}
+              </Title>
+            </React.Fragment>
+          )
+        }
       </div>
     )
   }
@@ -86,9 +93,9 @@ function AvatarUploader({
     <Upload {...uploadProps}>
       <React.Fragment>
         {
-          imageUrl ? (
+          avatarUrl ? (
             <React.Fragment>
-              <img src={imageUrl} alt="avatar" />
+              <img src={avatarUrl} alt="avatar" />
               {
                 !loading && (
                   <div className="edit-icon">
@@ -113,15 +120,18 @@ function AvatarUploader({
 
 AvatarUploader.defaultProps = {
   isEdit: false,
+  avatarUrl: '',
   iconType: 'camera',
-  label: 'Add Photo'
+  label: 'Add Photo',
+  onSave: () => { },
 }
 
 AvatarUploader.propTypes = {
   isEdit: PropTypes.bool,
-  onSave: PropTypes.func,
+  avatarUrl: PropTypes.string,
   iconType: PropTypes.string,
   label: PropTypes.string,
+  onSave: PropTypes.func,
 }
 
 export default AvatarUploader

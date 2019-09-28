@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { connect, Field } from 'formik'
 import Button from 'antd/es/button'
 import Typography from 'antd/es/typography'
+import { triggerFormLevelValidation } from '../utils/formik.js'
 import FieldLabel from '../partials/fieldLabel.jsx'
 import CustomInputComponent from '../partials/formik/customInputComponent.jsx'
 import '../styles/signUpForm.scss'
@@ -13,19 +14,9 @@ const { Paragraph } = Typography
 function SignUpForm({ history, formik }) {
 
   function signUp() {
-    formik.validateForm().then((errors) => {
-      const errorKeys = Object.keys(errors)
-
-      if (errorKeys.length > 0) {
-        const touched = errorKeys.reduce((acc, key) => {
-          acc[key] = !!errors[key]
-          return acc
-        }, {})
-        formik.setTouched(touched)
-      } else {
-        history.push('/upload/medical-license')
-      }
-    })
+    triggerFormLevelValidation(formik, () => (
+      history.push('/upload/medical-license')
+    ))
   }
 
   return (
@@ -44,7 +35,6 @@ function SignUpForm({ history, formik }) {
       </FieldLabel>
       <FieldLabel label="Phone Number">
         <Field
-          type="number"
           name="phone"
           component={CustomInputComponent}
         />

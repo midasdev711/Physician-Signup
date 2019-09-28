@@ -1,26 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'formik'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
+import { triggerFormLevelValidation } from '../../utils/formik.js'
 import PreviewBtns from '../../partials/previewBtns.jsx'
 import AvatarUploader from '../../partials/avatarUploader.jsx'
 import ProfileEditForm from './editForm.jsx'
 import '../../styles/editPreview.scss'
 
-function EditPreview({ onSave, onCancel }) {
+function EditPreview({ onCancel, formik }) {
   const avatarUploaderProps = {
     isEdit: true,
-    onSave,
-  }
-  
-  const profileEditForm = {
-    onSubmit: () => {},
+    avatarUrl: formik.values.avatar,
+    onSave: (avatarUrl) => {
+      formik.setFieldValue('avatar', avatarUrl)
+    },
   }
   
   const previewBtns = {
     isEdit: true,
-    onSave,
-    onCancel,
+    onSave: () => {
+      triggerFormLevelValidation(formik, () => onCancel())
+    },
+    onCancel: () => {
+      formik.resetForm()
+      onCancel()
+    },
   }
 
   return (
@@ -30,11 +36,11 @@ function EditPreview({ onSave, onCancel }) {
           <AvatarUploader {...avatarUploaderProps} />
         </Col>
         <Col xs={24} sm={18}>
-          <Row gutter={24} className="preview-edit-info">
-            <Col>
-              <ProfileEditForm {...profileEditForm} />
+          <Row className="preview-edit-info">
+            <Col xs={24} sm={19}>
+              <ProfileEditForm />
             </Col>
-            <Col>
+            <Col xs={24} sm={5} style={{ textAlign: 'right' }}>
               <PreviewBtns {...previewBtns} />
             </Col>
           </Row>
@@ -47,8 +53,8 @@ function EditPreview({ onSave, onCancel }) {
 EditPreview.defaultProps = {}
 
 EditPreview.propTypes = {
-  onSave: PropTypes.func,
   onCancel: PropTypes.func,
+  formik: PropTypes.object,
 }
 
-export default EditPreview
+export default connect(EditPreview)

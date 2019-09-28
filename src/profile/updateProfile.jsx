@@ -27,7 +27,6 @@ function UpdateProfile({ history }) {
   }
 
   const editPreviewProps = {
-    onSave: () => setShowPreview(true),
     onCancel: () => setShowPreview(true),
   }
 
@@ -60,7 +59,7 @@ function UpdateProfile({ history }) {
     <div className="profile">
       <StepsWrapper current={2} contentStyle={{ paddingTop: '39px' }}>
         <React.Fragment>
-          <Row className="profile-content" style={{ maxWidth: '740px', margin: '0 auto' }}>
+          <Row className="profile-content" /* style={{ maxWidth: '740px', margin: '0 auto' }} */>
             <Col xs={24}>
               {
                 showPreview ? (

@@ -3,6 +3,7 @@
 .nav-btns {
   .ant-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-end;
     
     @include media($md) {
@@ -27,6 +28,10 @@
       text-transform: capitalize;
       color: $primary-color;
       width: 135px;
+      
+      @include media($sm) {
+        margin-bottom: 12px;
+      }
     }
   
     .submit-btn {

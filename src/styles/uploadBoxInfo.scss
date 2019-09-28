@@ -8,7 +8,7 @@
     box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.07);
     margin-left: 0;
     
-    @include media($md) {
+    @include media($sm) {
       margin: 0 auto;
     }
 
@@ -35,7 +35,7 @@
       color: $secondary-text-color;
       margin: 50px 0 24px;
       
-      @include media($md) {
+      @include media($sm) {
         margin: 50px auto 24px;
       }
     }
