@@ -45,4 +45,22 @@
       }
     }
   }
+  
+  .preview-edit-education-add-btn {
+    margin-left: 10px;
+    border: 1.5px solid #15A9E1;
+    border-radius: 2px;
+    width: 62px;
+    padding: 0;
+    color: $primary-color !important;
+    @include text(
+      $font-size: 14px, $font-weight: 500, $line-height: 24px
+    );
+  }
+  
+  .preview-edit-education-tip {
+    @include text($line-height: 24px);
+    margin-top: 12px;
+    max-width: 313px;
+  }
 }

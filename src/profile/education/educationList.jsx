@@ -1,96 +1,124 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import Tooltip from 'antd/lib/tooltip'
-import Tag from 'antd/es/tag'
-import Typography from 'antd/es/typography'
+import { FieldArray } from 'formik'
+import PreviewEditList from './previewEditList.jsx'
+import EducationAddForm from './educationAddForm.jsx'
+import AddBtn from './addBtn.jsx'
 import '../../styles/educationList.scss'
 
-const { Title } = Typography
-
-const mockEducationList = [
-  {
-    id: '1',
-    qualification: 'Doctor of Surgery',
-    school: 'Harvard Medical School',
-    graduatedAt: '2009-06-06',
+const styles = {
+  divider: {
+    margin: '24px 0',
+    border: '0.5px solid #D8D8D8',
+    maxWidth: '400px',
   },
-  {
-    id: '2',
-    qualification: 'Doctor of Medicine',
-    school: 'Duke-NUS Graduate Medical',
-    graduatedAt: '2001-07-07',
-  }
-]
+}
 
-function EducationList({ isEdit, onRemove }) {
-  const [educationList /* , setEducationList */] = useState(mockEducationList)
+function EducationList({ isEdit }) {
+  const [showAddForm, setShowAddForm] = useState(false)
 
-  const maxLen = 30
-
-  function isLongText(text) {
-    return text.length > maxLen
+  function onShow() {
+    setShowAddForm(true)
   }
 
-  // function trimText(text) {
-  //   return `${text.slice(0, maxLen)}...`
-  // }
-
-  // function formatText(text) {
-  //   return isLongText(text) ? trimText(text) : text
-  // }
-
-  function setTooltip(text) {
-    return isLongText(text) ? text : ''
+  function onClose() {
+    setShowAddForm(false)
   }
 
   return (
     <div className="education-list">
-      {
-        educationList.map((item) => {
+      <FieldArray
+        name="educations"
+        render={({ form, remove, push }) => {
           const {
-            id, qualification, school, graduatedAt,
-          } = item
+            values: { educations, education },
+            validateForm,
+            setTouched,
+            setFieldValue,
+            setFieldTouched,
+          } = form
+          
+          function resetAndClose() {
+            if (showAddForm) {
+              setFieldValue('education', {
+                qualification: '',
+                school: '',
+                graduatedAt: '',
+              }, false)
+              setFieldTouched('education', {})
+              onClose()
+            }
+          }
 
-          const qualificationText = `${new Date(graduatedAt).getFullYear()} - ${qualification}`
+          function onAddForm() {
+            validateForm().then((errors) => {
+              if (Object.keys(errors).length) {
+                const errorKeys = Object.keys(errors.education)
+
+                if (errorKeys.length > 0) {
+                  const touched = errorKeys.reduce((acc, key) => {
+                    acc[key] = !!errors.education[key]
+                    return acc
+                  }, {})
+                  setTouched({ education: touched })
+                }
+              } else {
+                push(education)
+                resetAndClose()
+              }
+            })
+          }
+          
+          const previewEditListProps = {
+            isEdit,
+            educations,
+            onRemove: (i) => remove(i),
+            onAdd: onShow,
+          }
 
           return (
-            <div key={id} className="education-list-item">
-              <Tag
-                className={!isEdit ? 'preview-mode' : ''}
-                closable={isEdit}
-                onClose={() => isEdit && onRemove(item)}
-              >
-                <div>
-                  <Tooltip title={setTooltip(qualificationText)}>
-                    <Title level={4} ellipsis className="education-list-item-quals">
-                      {qualificationText}
-                    </Title>
-                  </Tooltip>
-                  <Tooltip title={setTooltip(school)}>
-                    <Title level={4} ellipsis className="education-list-item-school">
-                      {school}
-                    </Title>
-                  </Tooltip>
-                </div>
-              </Tag>
+            <div>
+              {
+                !showAddForm ? (
+                  <PreviewEditList {...previewEditListProps} />
+                ) : (
+                  <div>
+                    <EducationAddForm />
+                    <div>
+                      <div style={styles.divider} />
+                      <AddBtn
+                        onAdd={onAddForm}
+                        onBack={resetAndClose}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+              {
+                isEdit && educations && educations.length > 0 && (
+                  <div>
+                    <div style={styles.divider} />
+                    <AddBtn
+                      onAdd={!showAddForm ? onShow : onAddForm}
+                      onBack={resetAndClose}
+                    />
+                  </div>
+                )
+              }
             </div>
           )
-        })
-      }
+        }}
+      />
     </div>
   )
 }
 
 EducationList.defaultProps = {
-  educationList: [],
   isEdit: false,
-  onRemove: () => { },
 }
 
 EducationList.propTypes = {
-  educationList: PropTypes.array,
   isEdit: PropTypes.bool,
-  onRemove: PropTypes.func,
 }
 
 export default EducationList

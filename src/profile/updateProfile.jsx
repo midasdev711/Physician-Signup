@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import { connect } from 'formik'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 // import message from 'antd/es/message'
@@ -13,13 +13,13 @@ import PreviewEducation from './education/previewEducation.jsx'
 import EditPreviewEducation from './education/editPreviewEducation.jsx'
 import NavBtns from '../partials/navBtns.jsx'
 
-function UpdateProfile({ history }) {
+function UpdateProfile({ formik }) {
   const [showPreview, setShowPreview] = useState(true)
   const [showDetails, setShowDetails] = useState(true)
   const [showEducation, setShowEducation] = useState(true)
 
   function onDone() {
-    // history.push('')
+    formik.handleSubmit()
   }
 
   const previewProps = {
@@ -35,7 +35,6 @@ function UpdateProfile({ history }) {
   }
 
   const editDetailsProps = {
-    onSave: () => setShowDetails(true),
     onCancel: () => setShowDetails(true),
   }
   
@@ -44,7 +43,6 @@ function UpdateProfile({ history }) {
   }
 
   const editEducationProps = {
-    onSave: () => setShowEducation(true),
     onCancel: () => setShowEducation(true),
   }
 
@@ -92,9 +90,7 @@ function UpdateProfile({ history }) {
 }
 
 UpdateProfile.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }),
+  formki: PropTypes.object,
 }
 
-export default withRouter(UpdateProfile)
+export default connect(UpdateProfile)

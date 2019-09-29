@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'formik'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 import PreviewHeader from '../../partials/previewHeader.jsx'
 import '../../styles/previewDetails.scss'
 
-function PreviewDetails({ onEdit }) {
+function PreviewDetails({ formik: { values }, onEdit }) {
   const previewHeader = {
     title: 'Additional Details',
     isEdit: false,
@@ -20,7 +21,7 @@ function PreviewDetails({ onEdit }) {
           Email Address
         </div>
         <div className="preview-details-value">
-          ivan.pavlov@gmail.com
+          {values.email}
         </div>
       </div>
       <Row>
@@ -30,7 +31,7 @@ function PreviewDetails({ onEdit }) {
               City/State
             </div>
             <div className="preview-details-value">
-              Bangalore
+              {values.cityState}
             </div>
           </div>
         </Col>
@@ -40,7 +41,7 @@ function PreviewDetails({ onEdit }) {
               Gender
             </div>
             <div className="preview-details-value">
-              Male
+              {values.gender}
             </div>
           </div>
         </Col>
@@ -53,6 +54,7 @@ PreviewDetails.defaultProps = {}
 
 PreviewDetails.propTypes = {
   onEdit: PropTypes.func,
+  formik: PropTypes.object,
 }
 
-export default PreviewDetails
+export default connect(PreviewDetails)

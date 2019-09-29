@@ -1,18 +1,6 @@
-@import './main.scss';
+// @import './main.scss';
 
 .preview-edit-education {
   padding: 21px;
   // border-bottom: 2px solid $primary-color;
-  
-  .preview-edit-education-add-btn {
-    margin-left: 10px;
-    border: 1.5px solid #15A9E1;
-    border-radius: 2px;
-    width: 62px;
-    padding: 0;
-    color: $primary-color !important;
-    @include text(
-      $font-size: 14px, $font-weight: 500, $line-height: 24px
-    );
-  }
 }

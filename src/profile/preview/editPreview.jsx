@@ -21,7 +21,9 @@ function EditPreview({ onCancel, formik }) {
   const previewBtns = {
     isEdit: true,
     onSave: () => {
-      triggerFormLevelValidation(formik, () => onCancel())
+      triggerFormLevelValidation(formik, () => {
+        onCancel()
+      })
     },
     onCancel: () => {
       formik.resetForm()

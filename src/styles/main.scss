@@ -30,7 +30,7 @@ $secondary-text-color: #606060;
 
 @mixin text(
   $font-size: 12px, $font-weight: normal,
-  $line-height: 30px, $letter-spacing: -0.2px, $color: $secondary-text-color,
+  $line-height: 30px, $letter-spacing: initial, $color: $secondary-text-color,
   $text-transform: initial
 ) {
   font-family: "Noto Sans", sans-serif;
