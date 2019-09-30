@@ -19,7 +19,7 @@ const fieldLabelStyle = {
 }
 
 function EducationAddForm() {
-  const dateFormat = 'YYYY/MM/DD'
+  const dateFormat = 'YYYY'
 
   return (
     <div>

@@ -10,15 +10,21 @@ import '../../styles/preview.scss'
 
 const { Title } = Typography
 
-function Preview({ onEdit, formik: { values } }) {
+function Preview({ onEdit, formik }) {
   const avatarUploaderProps = {
-    avatarUrl: values.avatar,
+    isEdit: true,
+    avatarUrl: formik.values.avatar,
+    onSave: (avatarUrl) => {
+      formik.setFieldValue('avatar', avatarUrl)
+    },
   }
   
   const previewBtns = {
     isEdit: false,
     onEdit,
   }
+  
+  const { values } = formik
 
   return (
     <div className="preview">
