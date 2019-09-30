@@ -28,26 +28,25 @@ function SignUpForm({ history, formik }) {
         email,
         phone: `${phonePrefix}${phone}`,
         password,
-        
         channel: '#physicianlanding',
         username: 'Physician SIgnup Bot',
         text: `A physician named ${name} signed up to view patient records. his info is as follows: "Name, email, phone, password", "icon_emoji": ":trophy:"`,
       }
 
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        })
-        const json = await response.json()
-        console.log('Success:', JSON.stringify(json))
+      // try {
+      //   const response = await fetch(url, {
+      //     method: 'POST',
+      //     body: JSON.stringify(payload),
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     }
+      //   })
+      //   const json = await response.json()
+      //   console.log('Success:', JSON.stringify(json))
         history.push('/upload/medical-license')
-      } catch (error) {
-        console.error('Error:', error)
-      }
+      // } catch (error) {
+      //   console.error('Error:', error)
+      // }
     })
   }
 

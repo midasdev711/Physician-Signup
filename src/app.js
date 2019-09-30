@@ -33,6 +33,8 @@ function App() {
               medicalLicense: null,
               avatar: '',
               skills: [],
+              cityState: '',
+              gender: 'male',
               educations: [],
               education: {
                 qualification: '',

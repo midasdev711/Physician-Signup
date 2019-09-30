@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'formik'
 import { triggerFormLevelValidation } from '../../utils/formik.js'
@@ -7,6 +7,12 @@ import EditDetailsForm from './editDetailsForm.jsx'
 import '../../styles/editPreviewDetails.scss'
 
 function EditPreviewDetails({ formik, onCancel }) {
+  const [initialValues] = useState({
+    email: formik.values.email,
+    cityState: formik.values.cityState,
+    gender: formik.values.gender,
+  })
+
   const previewHeader = {
     title: 'Additional Details',
     isEdit: true,
@@ -16,7 +22,18 @@ function EditPreviewDetails({ formik, onCancel }) {
       })
     },
     onCancel: () => {
-      formik.resetForm()
+      const {
+        values: {
+          email, cityState, gender, ...restValues
+        },
+      } = formik
+
+      formik.resetForm({
+        email: initialValues.email,
+        cityState: initialValues.cityState,
+        gender: initialValues.gender,
+        ...restValues,
+      })
       onCancel()
     },
   }

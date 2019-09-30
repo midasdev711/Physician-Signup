@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'formik'
 import PreviewHeader from '../../partials/previewHeader.jsx'
@@ -6,6 +6,11 @@ import EducationList from './educationList.jsx'
 import '../../styles/editPreviewEducation.scss'
 
 function EditPreviewEducation({ formik, onCancel }) {
+  const [initialValues] = useState({
+    education: formik.values.education,
+    educations: formik.values.educations,
+  })
+
   const previewHeader = {
     title: 'Education',
     isEdit: true,
@@ -13,7 +18,17 @@ function EditPreviewEducation({ formik, onCancel }) {
       onCancel()
     },
     onCancel: () => {
-      formik.resetForm()
+      const {
+        values: {
+          education, educations, ...restValues
+        },
+      } = formik
+
+      formik.resetForm({
+        education: initialValues.education,
+        educations: initialValues.educations,
+        ...restValues,
+      })
       onCancel()
     },
   }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'formik'
 import Row from 'antd/es/row'
@@ -10,6 +10,12 @@ import ProfileEditForm from './editForm.jsx'
 import '../../styles/editPreview.scss'
 
 function EditPreview({ onCancel, formik }) {
+  const [initialValues] = useState({
+    fullName: formik.values.fullName,
+    phone: formik.values.phone,
+    skills: formik.values.skills,
+  })
+
   const avatarUploaderProps = {
     isEdit: true,
     avatarUrl: formik.values.avatar,
@@ -26,7 +32,18 @@ function EditPreview({ onCancel, formik }) {
       })
     },
     onCancel: () => {
-      formik.resetForm()
+      const {
+        values: {
+          fullName, phone, skills, ...restValues
+        },
+      } = formik
+
+      formik.resetForm({
+        fullName: initialValues.fullName,
+        phone: initialValues.phone,
+        skills: initialValues.skills,
+        ...restValues,
+      })
       onCancel()
     },
   }

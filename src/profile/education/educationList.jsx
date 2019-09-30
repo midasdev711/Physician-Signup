@@ -95,7 +95,7 @@ function EducationList({ isEdit }) {
                 )
               }
               {
-                isEdit && educations && educations.length > 0 && (
+                isEdit && !showAddForm  && educations && educations.length > 0 && (
                   <div>
                     <div style={styles.divider} />
                     <AddBtn
