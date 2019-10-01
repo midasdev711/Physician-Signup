@@ -21,16 +21,13 @@ function SignUpForm({ history, formik }) {
       const {
         fullName: name, email, phonePrefix, phone, password,
       } = formik.values
-
+      
       const url = 'https://hooks.slack.com/services/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'
+
       const payload = {
-        name,
-        email,
-        phone: `${phonePrefix}${phone}`,
-        password,
         channel: '#physicianlanding',
         username: 'Physician SIgnup Bot',
-        text: `A physician named ${name} signed up to view patient records. his info is as follows: "Name, email, phone, password", "icon_emoji": ":trophy:"`,
+        text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, ${password}", icon_emoji: ":trophy:"`
       }
 
       try {
