@@ -12,6 +12,7 @@ import '../../styles/editPreview.scss'
 function EditPreview({ onCancel, formik }) {
   const [initialValues] = useState({
     fullName: formik.values.fullName,
+    phonePrefix: formik.values.phonePrefix,
     phone: formik.values.phone,
     skills: formik.values.skills,
   })
@@ -34,12 +35,13 @@ function EditPreview({ onCancel, formik }) {
     onCancel: () => {
       const {
         values: {
-          fullName, phone, skills, ...restValues
+          fullName, phonePrefix, phone, skills, ...restValues
         },
       } = formik
 
       formik.resetForm({
         fullName: initialValues.fullName,
+        phonePrefix: initialValues.phonePrefix,
         phone: initialValues.phone,
         skills: initialValues.skills,
         ...restValues,

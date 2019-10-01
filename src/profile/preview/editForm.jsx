@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Field, FieldArray } from 'formik'
+import { Field, FieldArray, ErrorMessage } from 'formik'
 import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 import Input from 'antd/es/input'
 import Tag from 'antd/es/tag'
 import Tooltip from 'antd/es/tooltip'
 import Icon from 'antd/es/icon'
+import Select from 'antd/es/select'
 import FieldLabel from '../../partials/fieldLabel.jsx'
 import CustomInputComponent from '../../partials/formik/customInputComponent.jsx'
+
+const { Option } = Select
 
 const style = {
   display: 'flex',
@@ -54,6 +57,29 @@ function EditForm() {
     setInputVisible(false)
     setNewSkill('')
   }
+  
+  const prefixSelector = (
+    <Field
+      name="phonePrefix"
+      render={({ field, form }) => (
+        <Select
+          {...field}
+          style={{ width: 80 }}
+          onChange={(value) => {
+            form.setFieldValue('phonePrefix', value)
+          }}
+        >
+          <Option value="234">+234</Option>
+          <Option value="971">+971</Option>
+          <Option value="65">+65</Option>
+          <Option value="1">+1</Option>
+          <Option value="91">+91</Option>
+          <Option value="880">+880</Option>
+          <Option value="93">+93</Option>
+        </Select>
+      )}
+    />
+  )
 
   return (
     <div className="profile-edit-form">
@@ -70,7 +96,16 @@ function EditForm() {
           <FieldLabel label="Phone Number">
             <Field
               name="phone"
-              component={CustomInputComponent}
+              render={({ field }) => (
+                <React.Fragment>
+                  <Input
+                    style={{ width: '100%' }}
+                    addonBefore={prefixSelector}
+                    {...field}
+                  />
+                  <ErrorMessage {...field} />
+                </React.Fragment>
+              )}
             />
           </FieldLabel>
         </Col>
