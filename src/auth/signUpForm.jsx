@@ -38,8 +38,9 @@ function SignUpForm({ history, formik }) {
             'Content-Type': 'application/x-www-form-urlencoded'
           }
         })
-        const json = await response.json()
-        console.log('Success:', JSON.stringify(json))
+        // const json = await response.json()
+        // console.log('Success:', json)
+        console.log('Success')
         history.push('/upload/medical-license')
       } catch (error) {
         console.error('Error:', error)
