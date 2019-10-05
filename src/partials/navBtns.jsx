@@ -4,12 +4,15 @@ import Row from 'antd/es/row'
 import Col from 'antd/es/col'
 import Button from 'antd/es/button'
 import Icon from 'antd/es/icon'
+import Spin from 'antd/es/spin'
 import '../styles/navBtns.scss'
 
 function NavBtns({
   showSkipBtn, skipBtnText, onSkip,
-  submitBtnText, showSubmitBtnIcon, onSubmit,
+  submitBtnText, showSubmitBtnIcon, isSubmitting, onSubmit,
 }) {
+  const antIcon = <Icon type="loading" style={{ fontSize: 24, color: '#fff' }} spin />
+
   return (
     <div className="nav-btns">
       <Row gutter={24}>
@@ -23,9 +26,18 @@ function NavBtns({
           )
         }
         <Col>
-          <Button className="submit-btn" type="primary" onClick={onSubmit}>
+          <Button className="submit-btn" type="primary" disabled={isSubmitting} onClick={onSubmit}>
             {submitBtnText}
-            {showSubmitBtnIcon && <Icon type="arrow-right" />}
+            {
+              showSubmitBtnIcon && (
+                isSubmitting ? (
+                  <Spin indicator={antIcon} />
+                ) : (
+                  <Icon type="arrow-right" />
+                )
+              )
+            }
+            {!showSubmitBtnIcon && isSubmitting && <Spin indicator={antIcon} />}
           </Button>
         </Col>
       </Row>
@@ -38,6 +50,7 @@ NavBtns.defaultProps = {
   skipBtnText: 'Skip For Now',
   submitBtnText: 'Next',
   showSubmitBtnIcon: true,
+  isSubmitting: false,
 }
 
 NavBtns.propTypes = {
@@ -46,6 +59,7 @@ NavBtns.propTypes = {
   onSkip: PropTypes.func,
   submitBtnText: PropTypes.string,
   showSubmitBtnIcon: PropTypes.bool,
+  isSubmitting: PropTypes.bool,
   onSubmit: PropTypes.func,
 }
 

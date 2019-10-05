@@ -43,7 +43,7 @@ function EducationList({ isEdit }) {
               setFieldValue('education', {
                 qualification: '',
                 school: '',
-                graduatedAt: '',
+                year: '',
               }, false)
               setFieldTouched('education', {})
               onClose()

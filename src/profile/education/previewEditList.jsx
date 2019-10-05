@@ -33,10 +33,10 @@ function PreviewEditList({
       {
         (educations.length > 0) ? educations.map((education, index) => {
           const {
-            qualification, school, graduatedAt,
+            qualification, school, year,
           } = education
 
-          const qualificationText = `${new Date(graduatedAt).getFullYear()} - ${qualification}`
+          const qualificationText = `${new Date(year).getFullYear()} - ${qualification}`
 
           return (
             <div key={index} className="education-list-item">

@@ -50,6 +50,7 @@ function UpdateProfile({ formik }) {
     showSkipBtn: false,
     submitBtnText: 'Done',
     showSubmitBtnIcon: false,
+    isSubmitting: formik.isSubmitting,
     onSubmit: onDone,
   }
 
