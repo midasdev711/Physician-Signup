@@ -17,7 +17,7 @@ export const triggerFormLevelValidation = (formik, callback = () => {}) => {
 }
 
 export const AppSchema = Yup.object().shape({
-  fullName: Yup.string()
+  name: Yup.string()
     .min(2, 'Too Short')
     .max(70, 'Too Long')
     .required('Please input your Full Name'),

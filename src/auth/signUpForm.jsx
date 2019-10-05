@@ -22,13 +22,19 @@ function SignUpForm({ history, formik }) {
         name, email, phonePrefix, phone, password,
       } = formik.values
       
-      const url = 'https://hooks.slack.com/services/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'
+      // const url = 'https://hooks.slack.com/services/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'
+      const url = 'https://alemhealthapi.azure-api.net/physiciansignupbe/signup'
 
       const payload = {
-        channel: '#physicianlanding',
-        username: 'Physician SIgnup Bot',
-        text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, Password: ${password}"`, 
-        icon_emoji: ':trophy:'
+        // channel: '#physicianlanding',
+        // username: 'Physician SIgnup Bot',
+        // text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, Password: ${password}"`, 
+        // icon_emoji: ':trophy:'
+        guid: '752a09bd-0491-4b3a-4444-73e37d7dbc3e',
+        name,
+        email,
+        phone: `+${phonePrefix}${phone}`,
+        password,
       }
 
       try {
@@ -36,7 +42,10 @@ function SignUpForm({ history, formik }) {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
+            'Postman-Token': '2de7f76b-aca2-4b85-8054-f74a0fa359da',
+            'cache-control': 'no-cache',
           }
         })
         // const json = await response.json()
