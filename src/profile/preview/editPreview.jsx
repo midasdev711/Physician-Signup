@@ -11,17 +11,17 @@ import '../../styles/editPreview.scss'
 
 function EditPreview({ onCancel, formik }) {
   const [initialValues] = useState({
-    fullName: formik.values.fullName,
+    name: formik.values.name,
     phonePrefix: formik.values.phonePrefix,
     phone: formik.values.phone,
-    skills: formik.values.skills,
+    specialities: formik.values.specialities,
   })
 
   const avatarUploaderProps = {
     isEdit: true,
-    avatarUrl: formik.values.avatar,
+    avatarUrl: formik.values.profilePhoto,
     onSave: (avatarUrl) => {
-      formik.setFieldValue('avatar', avatarUrl)
+      formik.setFieldValue('profilePhoto', avatarUrl)
     },
   }
   
@@ -35,15 +35,15 @@ function EditPreview({ onCancel, formik }) {
     onCancel: () => {
       const {
         values: {
-          fullName, phonePrefix, phone, skills, ...restValues
+          name, phonePrefix, phone, specialities, ...restValues
         },
       } = formik
 
       formik.resetForm({
-        fullName: initialValues.fullName,
+        name: initialValues.name,
         phonePrefix: initialValues.phonePrefix,
         phone: initialValues.phone,
-        skills: initialValues.skills,
+        specialities: initialValues.specialities,
         ...restValues,
       })
       onCancel()

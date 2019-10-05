@@ -13,9 +13,9 @@ const { Title } = Typography
 function Preview({ onEdit, formik }) {
   const avatarUploaderProps = {
     isEdit: true,
-    avatarUrl: formik.values.avatar,
+    avatarUrl: formik.values.profilePhoto,
     onSave: (avatarUrl) => {
-      formik.setFieldValue('avatar', avatarUrl)
+      formik.setFieldValue('profilePhoto', avatarUrl)
     },
   }
   
@@ -36,16 +36,16 @@ function Preview({ onEdit, formik }) {
           <Row type="flex" justify="space-between" className="preview-info">
             <Col>
               <Title level={4} className="preview-info-fullname">
-                {values.fullName}
+                {values.name}
               </Title>
               <Title level={4} className="preview-info-phone">
                 {values.phone}
               </Title>
               <div className="preview-info-skills">
                 {
-                  values.skills.map(skill => (
-                    <div key={skill} className="preview-info-skills-item">
-                      {skill}
+                  values.specialities.map(({ name }) => (
+                    <div key={name} className="preview-info-skills-item">
+                      {name}
                     </div>
                   ))
                 }

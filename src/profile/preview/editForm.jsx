@@ -36,28 +36,12 @@ const styles = {
 }
 
 function EditForm() {
-  const [newSkill, setNewSkill] = useState('')
   const [inputVisible, setInputVisible] = useState(false)
 
   function showInput() {
     setInputVisible(true)
   }
 
-  function onChange(e) {
-    const value = e.target.value
-    setNewSkill(value)
-  }
-
-  function onInputConfirm(skills, push) {
-
-    if (newSkill && skills.indexOf(newSkill) === -1) {
-      push(newSkill)
-    }
-
-    setInputVisible(false)
-    setNewSkill('')
-  }
-  
   const prefixSelector = (
     <Field
       name="phonePrefix"
@@ -87,7 +71,7 @@ function EditForm() {
         <Col xs={24} sm={12}>
           <FieldLabel label="Full Name">
             <Field
-              name="fullName"
+              name="name"
               component={CustomInputComponent}
             />
           </FieldLabel>
@@ -112,54 +96,75 @@ function EditForm() {
       </Row>
       <div>
         <FieldArray
-          name="skills"
-          render={({ form: { values: { skills } }, remove, push }) => (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {
-                skills && skills.length > 0 && skills.map((skill, index) => {
-                  const isLongTag = skill.length > 20
+          name="specialities"
+          render={({
+            form: {
+              values: { specialities, speciality },
+              setFieldValue,
+            },
+            remove, push,
+          }) => {
+            function onChange(e) {
+              setFieldValue('speciality.name', e.target.value)
+            }
 
-                  const tagElem = (
-                    <Tag
-                      style={styles.tag}
-                      key={index}
-                      closable
-                      onClose={() => remove(index)}
-                    >
-                      {isLongTag ? `${skill.slice(0, 20)}...` : skill}
+            function onInputConfirm() {
+              if (speciality.name && specialities.indexOf(speciality) === -1) {
+                push({ ...speciality })
+              }
+          
+              setInputVisible(false)
+              setFieldValue('speciality.name', '')
+            }
+
+            return (
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {
+                  specialities && specialities.length > 0 && specialities.map(({ name }, index) => {
+                    const isLongTag = name.length > 20
+  
+                    const tagElem = (
+                      <Tag
+                        style={styles.tag}
+                        key={index}
+                        closable
+                        onClose={() => remove(index)}
+                      >
+                        {isLongTag ? `${name.slice(0, 20)}...` : name}
+                      </Tag>
+                    )
+  
+                    return isLongTag ? (
+                      <Tooltip title={name} key={index}>
+                        {tagElem}
+                      </Tooltip>
+                    ) : (
+                      tagElem
+                    )
+                  })
+                }
+                {
+                  inputVisible && (
+                    <Input
+                      type="text"
+                      autoFocus
+                      style={{ width: 214 }}
+                      onChange={onChange}
+                      onBlur={onInputConfirm}
+                      onPressEnter={onInputConfirm}
+                    />
+                  )
+                }
+                {
+                  !inputVisible && (
+                    <Tag style={styles.addSkill} onClick={showInput}>
+                      <Icon type="plus" /> Add Skill
                     </Tag>
                   )
-
-                  return isLongTag ? (
-                    <Tooltip title={skill} key={index}>
-                      {tagElem}
-                    </Tooltip>
-                  ) : (
-                    tagElem
-                  )
-                })
-              }
-              {
-                inputVisible && (
-                  <Input
-                    type="text"
-                    autoFocus
-                    style={{ width: 214 }}
-                    onChange={onChange}
-                    onBlur={() => onInputConfirm(skills, push)}
-                    onPressEnter={() => onInputConfirm(skills, push)}
-                  />
-                )
-              }
-              {
-                !inputVisible && (
-                  <Tag style={styles.addSkill} onClick={showInput}>
-                    <Icon type="plus" /> Add Skill
-                  </Tag>
-                )
-              }
-            </div>
-          )}
+                }
+              </div>
+            )
+          }}
         />
       </div>
     </div>

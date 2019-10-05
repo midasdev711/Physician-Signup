@@ -19,27 +19,36 @@ function App() {
           render={({ match, history }) => {
             const {
               params: {
-                fullName = 'Ivan Pavlov',
+                name = 'Ivan Pavlov',
                 email = 'ivan.pavlov@gmail.com',
               },
             } = match
 
             const initialValues = {
-              fullName,
+              name,
               email,
               phonePrefix: '234',
               phone: '',
               password: '',
               medicalLicense: null,
-              avatar: '',
-              skills: [],
+              profilePhoto: '',
+              speciality: {
+                name: '',
+              },
+              specialities: [],
               cityState: '',
+              // address: {
+              //   country: '',
+              //   state: '',
+              //   city: '',
+              //   street: '',
+              // },
               gender: 'male',
               educations: [],
               education: {
                 qualification: '',
                 school: '',
-                graduatedAt: '',
+                year: '',
               },
             }
 
@@ -50,7 +59,10 @@ function App() {
                 // validate={validate}
                 onSubmit={(values, { setSubmitting }) => {
                   console.log('onSubmit values', values)
-                  // const { education, ...restValues } = values
+                  // const {
+                  //   education, speciality,
+                  //   ...restValues
+                  // } = values
                   history.push('/result/success')
                   // JSON.stringify(values, null, 2)
                   // setSubmitting(false)

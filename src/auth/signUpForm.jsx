@@ -19,7 +19,7 @@ function SignUpForm({ history, formik }) {
     triggerFormLevelValidation(formik, async () => {
       // console.log('signUp', formik.values)
       const {
-        fullName: name, email, phonePrefix, phone, password,
+        name, email, phonePrefix, phone, password,
       } = formik.values
       
       const url = 'https://hooks.slack.com/services/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'
@@ -76,7 +76,7 @@ function SignUpForm({ history, formik }) {
     <div className="sign-up-form">
       <FieldLabel label="Full Name">
         <Field
-          name="fullName"
+          name="name"
           component={CustomInputComponent}
         />
       </FieldLabel>

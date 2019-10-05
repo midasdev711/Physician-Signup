@@ -39,7 +39,7 @@ function EducationAddForm() {
       </FieldLabel>
       <FieldLabel label="Year Graduated" maxWidth={293} rootStyle={fieldLabelStyle}>
         <Field
-          name="education.graduatedAt"
+          name="education.year"
           validate={validate}
           render={({ field, form }) => {
             const { value } = field
@@ -50,7 +50,7 @@ function EducationAddForm() {
                   value={value ? moment(value, dateFormat) : null}
                   format={dateFormat}
                   onChange={(momentDate, dateStr) => {
-                    form.setFieldValue('education.graduatedAt', dateStr)
+                    form.setFieldValue('education.year', dateStr)
                   }}
                 />
                 <ErrorMessage {...field} />
