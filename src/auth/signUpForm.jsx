@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect, Field, ErrorMessage } from 'formik'
@@ -6,6 +6,8 @@ import Button from 'antd/es/button'
 import Typography from 'antd/es/typography'
 import Select from 'antd/es/select'
 import Input from 'antd/es/input'
+import Icon from 'antd/es/icon'
+import Spin from 'antd/es/spin'
 import { triggerFormLevelValidation } from '../utils/formik.js'
 import FieldLabel from '../partials/fieldLabel.jsx'
 import CustomInputComponent from '../partials/formik/customInputComponent.jsx'
@@ -15,9 +17,41 @@ const { Paragraph } = Typography
 const { Option } = Select
 
 function SignUpForm({ history, formik }) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const signUp = () => {
     triggerFormLevelValidation(formik, async () => {
-      history.push('/upload/medical-license')
+      // console.log('signUp', formik.values)
+      const {
+        name, email, phonePrefix, phone, password,
+      } = formik.values
+      
+      const url = 'https://hooks.slack.com/services/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'
+
+      const payload = {
+        channel: '#physicianlanding',
+        username: 'Physician SIgnup Bot',
+        text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, Password: ${password}"`, 
+        icon_emoji: ':trophy:'
+      }
+
+      try {
+        setIsSubmitting(true)
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        // const json = await response.json()
+        // console.log('Success:', json)
+        console.log('Success')
+        setIsSubmitting(false)
+        history.push('/upload/medical-license')
+      } catch (error) {
+        console.error('Error:', error)
+      }
     })
   }
 
@@ -43,6 +77,8 @@ function SignUpForm({ history, formik }) {
       )}
     />
   )
+  
+  const antIcon = <Icon type="loading" style={{ fontSize: 24, color: '#fff' }} spin />
 
   return (
     <div className="sign-up-form">
@@ -81,8 +117,12 @@ function SignUpForm({ history, formik }) {
         />
       </FieldLabel>
       <div className="sign-up-form-submit-btn">
-        <Button type="primary" onClick={signUp}>
-          Claim My Account
+        <Button
+          disabled={isSubmitting}
+          type="primary"
+          onClick={signUp}
+        >
+          {isSubmitting ? <Spin indicator={antIcon} /> : 'Claim My Account'}
         </Button>
       </div>
       <div className="sign-up-form-terms-conditions">

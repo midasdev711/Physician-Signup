@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import PropTypes from 'prop-types'
 import { Field, ErrorMessage } from 'formik'
 import moment from 'moment'
@@ -19,6 +19,8 @@ const fieldLabelStyle = {
 }
 
 function EducationAddForm() {
+  const [isOpen, setIsOpen] = useState(false)
+
   const dateFormat = 'YYYY'
 
   return (
@@ -47,8 +49,22 @@ function EducationAddForm() {
               <React.Fragment>
                 <DatePicker
                   style={{ width: '100%' }}
+                  mode="year"
+                  open={isOpen}
+                  placeholder="Select year"
                   value={value ? moment(value, dateFormat) : null}
                   format={dateFormat}
+                  onOpenChange={(status) => {
+                    if(status){
+                      setIsOpen(true)
+                    } else {
+                      setIsOpen(false)
+                    }
+                  }}
+                  onPanelChange={(momentDate) => {
+                    setIsOpen(false)
+                    form.setFieldValue('education.year', `${momentDate.year()}`)
+                  }}
                   onChange={(momentDate, dateStr) => {
                     form.setFieldValue('education.year', dateStr)
                   }}

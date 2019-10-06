@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BrowserRouter, Switch, Route, Redirect,
 } from 'react-router-dom'
+import queryString from 'query-string'
 import { Formik, Form } from 'formik'
 import { AppSchema } from './utils/formik'
 import './styles/app.css'
@@ -15,22 +16,16 @@ function App() {
   const onSubmit = async (values, callback) => {
     // console.log('onSubmit', values)
     const {
-      name, email, phonePrefix, phone, password,
+      name, email, phonePrefix, phone, // password,
     } = values
-    
-    // const url = 'https://hooks.slack.com/services/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'
+
     const url = 'https://alemhealthapi.azure-api.net/physiciansignupbe/signup'
 
     const payload = {
-      // channel: '#physicianlanding',
-      // username: 'Physician SIgnup Bot',
-      // text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, Password: ${password}"`, 
-      // icon_emoji: ':trophy:'
       guid: '752a09bd-0491-4b3a-4444-73e37d7dbc3e',
       name,
       email,
       phone: `+${phonePrefix}${phone}`,
-      password,
     }
 
     try {
@@ -38,9 +33,11 @@ function App() {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {
-          // 'Content-Type': 'application/x-www-form-urlencoded',
+          'Access-Control-Allow-Origin': 'http://127.0.0.1:3000',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
           'Content-Type': 'application/json',
-          'Postman-Token': '2de7f76b-aca2-4b85-8054-f74a0fa359da',
+          'Authorization': 'Bearer 2de7f76b-aca2-4b85-8054-f74a0fa359da',
           'cache-control': 'no-cache',
         }
       })
@@ -57,13 +54,12 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Route
-          render={({ match, history }) => {
+          render={({ location, history }) => {
             const {
-              params: {
-                name = 'Ivan Pavlov',
-                email = 'ivan.pavlov@gmail.com',
-              },
-            } = match
+              name = 'Ivan Pavlov',
+              email = 'test@email.com',
+              facility = 'AlemHealth Test Facility'
+            } = queryString.parse(location.search)
 
             const initialValues = {
               name,
