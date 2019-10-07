@@ -10,6 +10,8 @@ import Icon from 'antd/es/icon'
 import Select from 'antd/es/select'
 import FieldLabel from '../../partials/fieldLabel.jsx'
 import CustomInputComponent from '../../partials/formik/customInputComponent.jsx'
+import InputAutoComplete from '../../partials/inputAutoComplete.jsx'
+import { mockSpecialities } from './mockSpecialities.js'
 
 const { Option } = Select
 
@@ -104,8 +106,8 @@ function EditForm() {
             },
             remove, push,
           }) => {
-            function onChange(e) {
-              setFieldValue('speciality.name', e.target.value)
+            function onChange(value) {
+              setFieldValue('speciality.name', value)
             }
 
             function onInputConfirm() {
@@ -145,13 +147,11 @@ function EditForm() {
                 }
                 {
                   inputVisible && (
-                    <Input
-                      type="text"
-                      autoFocus
-                      style={{ width: 214 }}
+                    <InputAutoComplete
+                      rootStyle={{ width: 214 }}
+                      dataSource={mockSpecialities}
                       onChange={onChange}
-                      onBlur={onInputConfirm}
-                      onPressEnter={onInputConfirm}
+                      onInputConfirm={onInputConfirm}
                     />
                   )
                 }

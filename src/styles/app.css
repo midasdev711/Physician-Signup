@@ -3,6 +3,9 @@
 /* stylelint-disable */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
 /* stylelint-disable at-rule-no-unknown */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+
 html,
 body {
   width: 100%;
