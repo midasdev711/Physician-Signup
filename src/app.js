@@ -35,9 +35,8 @@ function App() {
         headers: {
           'Access-Control-Allow-Origin': 'http://127.0.0.1:3000',
           'Access-Control-Allow-Methods': 'POST',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Headers': 'Content-Type',
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 2de7f76b-aca2-4b85-8054-f74a0fa359da',
           'cache-control': 'no-cache',
         }
       })
