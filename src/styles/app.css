@@ -21298,4 +21298,11 @@ div.ant-typography-edit-content {
     opacity: 0;
   }
 }
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Noto Sans'), local('NotoSans'), url(https://fonts.gstatic.com/s/notosans/v9/o-0IIpQlx3QUlC5A4PNr5TRF.ttf) format('truetype');
+}
 /*# sourceMappingURL=app.css.map */
