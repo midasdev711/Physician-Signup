@@ -19,7 +19,7 @@ function App() {
       name, email, phonePrefix, phone, // password,
     } = values
 
-    const url = 'https://alemhealthapi.azure-api.net/physiciansignupbe/signup'
+    const url = 'https://physiciansignupbe.azurewebsites.net/signup'
 
     const payload = {
       guid: '752a09bd-0491-4b3a-4444-73e37d7dbc3e',
