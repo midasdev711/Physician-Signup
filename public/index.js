@@ -1,14 +1,10 @@
-var express = require('express');
+const express = require('express');
 
-var server = express();
+const server = express();
 
-var options = {
-
-index: 'index.html'
-
-};
-
-server.use('/', express.static('/home/site/wwwroot', options));
+server.use(express.static('/home/site/wwwroot'));
+server.get('/*', (req, res) => {
+    res.sendFile('/home/site/wwwroot/index.html');
+});
 
 server.listen(process.env.PORT);
-
