@@ -19,11 +19,13 @@
     
     .header-logo-wrapper {
       margin-right: 24px;
+      width: 219px;
+      height: 52px;
   
       .header-logo {
         @include backgroundImg('/assets/images/alem-health-logo.png');
-        width: 219px;
-        height: 52px;
+        width: 100%;
+        height: 100%;
       }
     }
   
