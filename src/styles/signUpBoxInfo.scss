@@ -11,10 +11,7 @@
     }
 
     .sign-up-box-info-img {
-      background: url('/assets/images/account.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
+      @include backgroundImg('/assets/images/account.svg');
       width: 100%;
       height: 100%;
     }

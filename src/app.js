@@ -55,9 +55,9 @@ function App() {
         <Route
           render={({ location, history }) => {
             const {
-              name = 'Ivan Pavlov',
+              Name: name = 'Ivan Pavlov',
               email = 'test@email.com',
-              facility = 'AlemHealth Test Facility'
+              // facility = 'AlemHealth Test Facility'
             } = queryString.parse(location.search)
 
             const initialValues = {
@@ -108,7 +108,7 @@ function App() {
                   })
                 }}
                 render={(props) => {
-                  console.log('App formik props', props)
+                  // console.log('App formik props', props)
                   return (
                     <Form>
                       <Layout>

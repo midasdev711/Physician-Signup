@@ -15,41 +15,33 @@
     .upload-section-img {
       width: 100%;
       height: 100%;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
     }
 
     .upload-section-img-default {
+      @include backgroundImg('/assets/images/upload-default.svg');
       @extend .upload-section-img;
-      background: url("/assets/images/upload-default.svg");
     }
 
     .upload-section-img-uploading {
+      @include backgroundImg('/assets/images/upload-uploading.svg');
       @extend .upload-section-img;
-      background: url("/assets/images/upload-uploading.svg");
     }
     
     .upload-section-img-done {
+      @include backgroundImg('/assets/images/upload-done.svg');
       @extend .upload-section-img;
-      background: url("/assets/images/upload-done.svg");
     }
     
     .upload-section-img-error {
+      // @include backgroundImg('/assets/images/upload-error.svg');
       @extend .upload-section-img;
-      // background: url("/assets/images/upload-error.svg");
     }
   }
 
   .upload-section-title {
-    font-family: "Noto Sans", sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 19px;
-    letter-spacing: 0.533333px;
-    text-transform: uppercase;
-    color: $secondary-text-color;
+    @include text(
+      $font-size: 14px, $font-weight: bold, $line-height: 19px, $letter-spacing: 0.533333px, $text-transform: uppercase
+    );
     width: 256px;
     margin-left: auto;
     margin-top: 42px;
@@ -79,12 +71,9 @@
       border: 1.5px solid #15a9e1;
       box-sizing: border-box;
       border-radius: 2px;
-      font-family: "Noto Sans", sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 24px;
-      color: $primary-color;
+      @include text(
+        $font-size: 14px, $font-weight: 500, $line-height: 24px, $color: $primary-color,
+      );
       width: 97px;
       height: 40px;
       padding: 0;

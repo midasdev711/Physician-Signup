@@ -97,10 +97,7 @@
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background: url('/assets/images/edit.svg');
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center;
+          @include backgroundImg('/assets/images/edit.svg');
         }
       }
       

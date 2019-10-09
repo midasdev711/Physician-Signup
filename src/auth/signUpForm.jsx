@@ -37,6 +37,7 @@ function SignUpForm({ history, formik }) {
 
       try {
         setIsSubmitting(true)
+        // eslint-disable-next-line no-unused-vars
         const response = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(payload),

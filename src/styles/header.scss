@@ -21,10 +21,7 @@
       margin-right: 24px;
   
       .header-logo {
-        background: url('/assets/images/logo.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
+        @include backgroundImg('/assets/images/alem-health-logo.png');
         width: 219px;
         height: 52px;
       }
@@ -32,13 +29,10 @@
   
     .header-contactus-btn {
       padding: 0;
-      text-transform: uppercase;
-      font-family: 'Noto Sans', sans-serif;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 24px;
-      letter-spacing: -0.32px;
+      @include text(
+        $font-size: 14px, $font-weight: 600, $line-height: 24px,
+        $letter-spacing: -0.32px, $text-transform: uppercase, $color: $primary-color,
+      );
     }
   }
 }
