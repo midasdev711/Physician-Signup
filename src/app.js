@@ -54,18 +54,22 @@ function App() {
       <BrowserRouter>
         <Route
           render={({ location, history }) => {
+            // console.log('location.search', location.search)
+            // console.log(queryString.parse(location.search))
             const {
               Name: name = 'AlemHealth Referring Physician',
               email = 'insert email here',
-              // facility = 'AlemHealth Test Facility'
+              facility: facilityName = 'AlemHealth Test Facility',
+              CC: phonePrefix = '234',
             } = queryString.parse(location.search)
 
             const initialValues = {
               name,
               email,
-              phonePrefix: '234',
+              phonePrefix,
               phone: '',
               password: '',
+              facilityName,
               medicalLicense: null,
               profilePhoto: '',
               speciality: {
