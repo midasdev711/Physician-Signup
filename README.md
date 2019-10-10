@@ -8,8 +8,8 @@
 ## General info
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-On the very first screen, the name, email, and facility name should all be passed by the URL
-(i.e. docsignup.alem.health?Name=Ivan Pavlov&email=test@email.com&facility=AlemHealth Test Facility)
+On the very first screen, the Name, email, facility name, and country code should all be passed by the URL 
+(i.e docsignup.alem.health?Name=Ivan Pavlov&email=test@email.com&facility=AlemHealth Test Facility&CC=234)
 
 ## Technologies
 Project is created with:
