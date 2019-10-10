@@ -55,8 +55,8 @@ function App() {
         <Route
           render={({ location, history }) => {
             const {
-              Name: name = 'Ivan Pavlov',
-              email = 'test@email.com',
+              Name: name = 'AlemHealth Referring Physician',
+              email = 'insert email here',
               // facility = 'AlemHealth Test Facility'
             } = queryString.parse(location.search)
 
