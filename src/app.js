@@ -57,10 +57,10 @@ function App() {
             // console.log('location.search', location.search)
             // console.log(queryString.parse(location.search))
             const {
-              Name: name = 'AlemHealth Referring Physician',
+              Name: name = 'insert name here',
               email = 'insert email here',
-              facility: facilityName = 'AlemHealth Test Facility',
-              CC: phonePrefix = '234',
+              facility: facilityName = 'A radiology group using AlemHealth Connect',
+              CC: phonePrefix = '65',
             } = queryString.parse(location.search)
 
             const initialValues = {
