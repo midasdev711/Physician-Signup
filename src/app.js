@@ -3,6 +3,7 @@ import {
   BrowserRouter, Switch, Route, Redirect,
 } from 'react-router-dom'
 import queryString from 'query-string'
+import  uuidv4 from 'uuid/v4'
 import { Formik, Form } from 'formik'
 import { AppSchema } from './utils/formik'
 import './styles/app.css'
@@ -16,16 +17,18 @@ function App() {
   const onSubmit = async (values, callback) => {
     // console.log('onSubmit', values)
     const {
-      name, email, phonePrefix, phone, // password,
+      name, email, phonePrefix, phone, ...restValues
     } = values
 
     const url = 'https://physiciansignupbe.azurewebsites.net/signup'
 
+    // guid: '752a09bd-0491-4b3a-4444-73e37d7dbc3e',
     const payload = {
-      guid: '752a09bd-0491-4b3a-4444-73e37d7dbc3e',
+      guid: uuidv4(),
       name,
       email,
       phone: `+${phonePrefix}${phone}`,
+      ...restValues,
     }
 
     try {
