@@ -14,8 +14,9 @@ function Preview({ onEdit, formik }) {
   const avatarUploaderProps = {
     isEdit: true,
     avatarUrl: formik.values.profilePhoto,
-    onSave: (avatarUrl) => {
+    onSave: (avatarUrl, profilePhotoFile) => {
       formik.setFieldValue('profilePhoto', avatarUrl)
+      formik.setFieldValue('profilePhotoFile', profilePhotoFile)
     },
   }
   

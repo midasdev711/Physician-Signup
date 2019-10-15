@@ -75,6 +75,7 @@ function App() {
               facilityName,
               medicalLicense: null,
               profilePhoto: '',
+              profilePhotoFile: null,
               speciality: {
                 name: '',
               },
@@ -115,7 +116,7 @@ function App() {
                   })
                 }}
                 render={(props) => {
-                  // console.log('App formik props', props)
+                  console.log('App formik props', props)
                   return (
                     <Form>
                       <Layout>

@@ -48,7 +48,7 @@ function AvatarUploader({
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, (imgUrl) => {
         setLoading(false)
-        onSave(imgUrl)
+        onSave(imgUrl, info.file.originFileObj)
       })
     }
   }
