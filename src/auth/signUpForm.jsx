@@ -30,7 +30,7 @@ function SignUpForm({ history, formik }) {
 
       const payload = {
         channel: '#physicianlanding',
-        username: 'Physician SIgnup Bot',
+        username: 'Physician Signup Bot',
         text: `A physician named ${name} signed up to view patient records. The user info is as follows: "Name: ${name}, Email: ${email}, Phone: +${phonePrefix}${phone}, Password: ${password}"`, 
         icon_emoji: ':trophy:'
       }
