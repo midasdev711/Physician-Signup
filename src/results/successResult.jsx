@@ -20,9 +20,9 @@ function SuccessResult() {
         We'll send you an update as soon as you're verified!
       </Paragraph>
       <div className="success-result-btn">
-        <a href="https://connect.alem.health/login">
+        <a href="https://alemhealth.com/providers">
           <Button>
-            Sign In to AlemHealth Connect
+            Learn more about AlemHealth Connect
           </Button>
         </a>
       </div>
