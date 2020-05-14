@@ -30,10 +30,10 @@ function Preview({ onEdit, formik }) {
   return (
     <div className="preview">
       <Row>
-        <Col xs={24} sm={6}>
+        <Col xs={24} sm={5}>
           <AvatarUploader {...avatarUploaderProps} />
         </Col>
-        <Col xs={24} sm={18}>
+        <Col xs={24} sm={10}>
           <Row type="flex" justify="space-between" className="preview-info">
             <Col>
               <Title level={4} className="preview-info-fullname">
@@ -56,6 +56,10 @@ function Preview({ onEdit, formik }) {
               <PreviewBtns {...previewBtns} />
             </Col>
           </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={15} className="border-bottom">
         </Col>
       </Row>
     </div>

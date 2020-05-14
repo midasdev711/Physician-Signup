@@ -53,6 +53,8 @@ function EducationList({ isEdit }) {
           function onAddForm() {
             validateForm().then((errors) => {
               if (Object.keys(errors).length) {
+                console.log(errors);
+
                 const errorKeys = Object.keys(errors.education)
 
                 if (errorKeys.length > 0) {

@@ -14,18 +14,11 @@ function PreviewBtns({ isEdit, onEdit, onSave, onCancel }) {
             </Button>
           </div>
         ) : (
-          <React.Fragment>
-            <div className="preview-save-btn">
-              <Button onClick={onSave}>
-                Save
-              </Button>
-            </div>
-            <div className="preview-cancel-btn">
-              <Button onClick={onCancel}>
-                Cancel
-              </Button>
-            </div>
-          </React.Fragment>
+          <div className="preview-save-btn">
+            <Button icon="form" onClick={onSave}>
+              Save
+            </Button>
+          </div>
         )
       }
     </div>

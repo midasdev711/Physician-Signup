@@ -30,10 +30,11 @@ const styles = {
   },
   addSkill: {
     ...style,
-    background: '#fff',
-    borderStyle: 'dashed',
-    width: '81px',
+    background: '#41AAE2',
+    border: '1.5px solid #15A9E1',
+    width: '32px',
     cursor: 'pointer',
+    color: 'white'
   },
 }
 
@@ -70,7 +71,7 @@ function EditForm() {
   return (
     <div className="profile-edit-form">
       <Row gutter={24}>
-        <Col xs={24} sm={12}>
+        <Col xs={24} sm={10}>
           <FieldLabel label="Full Name">
             <Field
               name="name"
@@ -78,7 +79,7 @@ function EditForm() {
             />
           </FieldLabel>
         </Col>
-        <Col xs={24} sm={12}>
+        <Col xs={24} sm={10}>
           <FieldLabel label="Phone Number">
             <Field
               name="phone"
@@ -148,7 +149,7 @@ function EditForm() {
                 {
                   inputVisible && (
                     <InputAutoComplete
-                      rootStyle={{ width: 214 }}
+                      rootStyle={{ width: 214, marginRight: '12px' }}
                       dataSource={mockSpecialities}
                       onChange={onChange}
                       onInputConfirm={onInputConfirm}
@@ -156,9 +157,9 @@ function EditForm() {
                   )
                 }
                 {
-                  !inputVisible && (
+                  (
                     <Tag style={styles.addSkill} onClick={showInput}>
-                      <Icon type="plus" /> Add Skill
+                      <Icon type="plus" />
                     </Tag>
                   )
                 }

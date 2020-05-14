@@ -13,7 +13,7 @@ function EditDetailsForm() {
     <div className="preview-edit-details-form">
       <Row gutter={24}>
         <Col xs={24} sm={12}>
-          <FieldLabel label="Email Address">
+          <FieldLabel label="Employer Name">
             <Field
               name="email"
               component={CustomInputComponent}
@@ -31,15 +31,10 @@ function EditDetailsForm() {
           </FieldLabel>
         </Col>
         <Col xs={24} sm={12}>
-          <FieldLabel label="Gender">
+          <FieldLabel label="Country">
             <Field
-              name="gender"
-              render={({ field }) => (
-                <Radio.Group {...field} buttonStyle="solid">
-                  <Radio.Button value="female">Female</Radio.Button>
-                  <Radio.Button value="male">Male</Radio.Button>
-                </Radio.Group>
-              )}
+              name="country"
+              component={CustomInputComponent}
             />
           </FieldLabel>
         </Col>

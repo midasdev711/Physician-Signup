@@ -20,9 +20,9 @@ function SignUpBoxInfo({ formik }) {
         <Col xs={24} sm={12} md={24}>
           <Typography>
             <Title level={4} className="sign-up-box-info-title">
-              <strong>Welcome to AlemHealth for Clinicians </strong><br /><br />
-              <strong>{formik.values.facilityName}</strong> has added you as a referring physician.
-              Please claim your account to access the medical records of patients you've referred to them.
+              <strong>Welcome to AlemHealth </strong><br /><br />
+              <strong>{formik.values.facilityName}</strong> has added you to the care team of a patient to view their diagnostic images and reports.
+              Please claim your account to access the medical records of patient.
             </Title>
           </Typography>
         </Col>

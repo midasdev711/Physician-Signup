@@ -8,7 +8,7 @@ import '../../styles/previewDetails.scss'
 
 function PreviewDetails({ formik: { values }, onEdit }) {
   const previewHeader = {
-    title: 'Additional Details',
+    title: 'Employer Details',
     isEdit: false,
     onEdit,
   }
@@ -18,7 +18,7 @@ function PreviewDetails({ formik: { values }, onEdit }) {
       <PreviewHeader {...previewHeader} />
       <div className="preview-details-email">
         <div className="preview-details-label">
-          Email Address
+          Facility Name
         </div>
         <div className="preview-details-value">
           {values.email}
@@ -38,12 +38,16 @@ function PreviewDetails({ formik: { values }, onEdit }) {
         <Col xs={24} sm={12}>
           <div className="preview-details-gender">
             <div className="preview-details-label">
-              Gender
+              Country
             </div>
             <div className="preview-details-value">
-              {values.gender}
+              {values.country}
             </div>
           </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={24} sm={24} className="border-bottom">
         </Col>
       </Row>
     </div>

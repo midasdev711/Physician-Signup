@@ -49,7 +49,7 @@ function SignUpForm({ history, formik }) {
         // console.log('Success:', json)
         console.log('Success')
         setIsSubmitting(false)
-        history.push('/upload/medical-license')
+        history.push('/update/profile')
       } catch (error) {
         console.error('Error:', error)
       }
@@ -83,7 +83,7 @@ function SignUpForm({ history, formik }) {
 
   return (
     <div className="sign-up-form">
-      <FieldLabel label="Full Name">
+      <FieldLabel label="Full Name" maxWidth={293}>
         <Field
           name="name"
           component={CustomInputComponent}
@@ -95,7 +95,7 @@ function SignUpForm({ history, formik }) {
           component={CustomInputComponent}
         />
       </FieldLabel>
-      <FieldLabel label="Phone Number">
+      <FieldLabel label="Phone Number" maxWidth={293}>
         <Field
           name="phone"
           render={({ field }) => (
@@ -110,7 +110,24 @@ function SignUpForm({ history, formik }) {
           )}
         />
       </FieldLabel>
-      <FieldLabel label="Password">
+      <FieldLabel label="Role" maxWidth={293}>
+        <Field
+          name="role"
+          render={({ field, form }) => (
+            <Select
+              {...field}
+              style={{ width: 293 }}
+              onChange={(value) => {
+                form.setFieldValue('role', value)
+              }}
+            >
+              <Option value="Admin">Admin</Option>
+              <Option value="Manager">Manager</Option>
+            </Select>
+          )}
+        />
+      </FieldLabel>
+      <FieldLabel label="Password" maxWidth={293}>
         <Field
           type="password"
           name="password"
@@ -129,7 +146,7 @@ function SignUpForm({ history, formik }) {
       <div className="sign-up-form-terms-conditions">
         <Paragraph>
           By clicking "Claim My Account", I agree to the
-          <a href="https://alemhealth.com/termsofservice"> Terms {'&'} Conditions</a> of signing up.
+          <a href="https://alemhealth.com/termsofservice" className="underline"> Terms {'&'} Conditions</a> of signing up.
         </Paragraph>
       </div>
     </div>

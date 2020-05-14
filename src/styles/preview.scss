@@ -1,11 +1,10 @@
 @import "./variables.scss";
 
 .preview {
-  padding: 0 21px 21px;
-  border-bottom: 2px solid $primary-color;
+  padding: 0 21px 20px;
 
   .preview-info {
-    padding: 8px 0 0 24px;
+    padding: 8px 0 0 10px;
     
     @include media($sm) {
       padding: 8px 0 0;
@@ -13,6 +12,7 @@
 
     .preview-info-fullname {
       @include text($font-size: 18px);
+      font-weight: 600;
       margin: 0;
     }
 

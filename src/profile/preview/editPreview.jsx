@@ -54,18 +54,19 @@ function EditPreview({ onCancel, formik }) {
   return (
     <div className="preview-edit">
       <Row>
-        <Col xs={24} sm={6}>
+        <Col xs={24} sm={5}>
           <AvatarUploader {...avatarUploaderProps} />
         </Col>
-        <Col xs={24} sm={18}>
+        <Col xs={24} sm={19}>
           <Row className="preview-edit-info">
-            <Col xs={24} sm={19}>
+            <Col xs={24} sm={24}>
               <ProfileEditForm />
             </Col>
-            <Col xs={24} sm={5} style={{ textAlign: 'right' }}>
-              <PreviewBtns {...previewBtns} />
-            </Col>
           </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={24} sm={15} className="border-bottom">
         </Col>
       </Row>
     </div>

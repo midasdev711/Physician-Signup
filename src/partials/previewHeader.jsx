@@ -26,7 +26,7 @@ function PreviewHeader({ title, isEdit, onEdit, onSave, onCancel }) {
             </Title>
           </div>
         </Col>
-        <Col>
+        <Col style={{ paddingRight: 0 }}>
           <PreviewBtns {...previewBtns} />
         </Col>
       </Row>

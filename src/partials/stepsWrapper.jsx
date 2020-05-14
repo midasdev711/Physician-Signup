@@ -12,7 +12,6 @@ const style = {
 function StepsWrapper({ current, contentStyle = {}, children }) {
   return (
     <div className="wrapper">
-      <Steps current={current} />
       <Row type="flex" justify="center">
         <Col className="content" style={{ ...style, ...contentStyle }}>
           {children}

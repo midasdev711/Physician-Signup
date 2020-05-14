@@ -66,14 +66,14 @@ function UpdateProfile({ formik }) {
                 ) : <EditPreview {...editPreviewProps} />
               }
             </Col>
-            <Col xs={24}>
+            <Col xs={15}>
               {
                 showDetails ? (
                   <PreviewDetails {...detailsProps} />
                 ) : <EditPreviewDetails {...editDetailsProps} />
               }
             </Col>
-            <Col xs={24}>
+            <Col xs={15}>
               {
                 showEducation ? (
                   <PreviewEducation {...educationProps} />

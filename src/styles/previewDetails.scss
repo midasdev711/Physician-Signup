@@ -2,7 +2,8 @@
 
 .preview-details {
   padding: 21px;
-  border-bottom: 2px solid $primary-color;
+  padding-right: 5px;
+  padding-top: 0;
   
   .preview-details-label {
     @include text(

@@ -14,7 +14,7 @@ function EditPreviewDetails({ formik, onCancel }) {
   })
 
   const previewHeader = {
-    title: 'Additional Details',
+    title: 'Employer Details',
     isEdit: true,
     onSave: () => {
       triggerFormLevelValidation(formik, () => {
