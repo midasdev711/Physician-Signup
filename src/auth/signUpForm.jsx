@@ -121,8 +121,16 @@ function SignUpForm({ history, formik }) {
                 form.setFieldValue('role', value)
               }}
             >
-              <Option value="Admin">Admin</Option>
-              <Option value="Manager">Manager</Option>
+              <Option value="Radiologist">Radiologist</Option>
+              <Option value="Physician">Physician</Option>
+              <Option value="Nurse">Nurse</Option>
+              <Option value="Physiotherapist">Physiotherapist</Option>
+              <Option value="Radiographer">Radiographer</Option>
+              <Option value="Radiologist Assistant">Radiologist Assistant</Option>
+              <Option value="Administrator">Administrator</Option>
+              <Option value="Occupational therapist">Occupational therapist</Option>
+              <Option value="Physician assistant">Physician assistant</Option>
+              <Option value="Home Health aides">Home Health aides</Option>
             </Select>
           )}
         />

@@ -311,9 +311,6 @@ mark {
   color: #fff;
   background: #41AAE2;
 }
-.ant-typography .underline {
-  text-decoration: underline;
-}
 .clearfix {
   zoom: 1;
 }
@@ -7508,7 +7505,7 @@ li.ant-calendar-time-picker-select-option-disabled:hover {
   display: none;
 }
 .ant-form-item-label > label {
-  color: #606060;
+  color: #41AAE2;
 }
 .ant-form-item-label > label::after {
   content: ':';
@@ -18697,7 +18694,8 @@ tr.ant-table-expanded-row td > .ant-table-wrapper {
   font-size: 12px;
   line-height: 20px;
   white-space: nowrap;
-  background: #EFEFF3;
+  background: #fafafa;
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
   cursor: default;
   opacity: 1;
@@ -18722,7 +18720,7 @@ tr.ant-table-expanded-row td > .ant-table-wrapper {
   font-size: 10px \9;
   transform: scale(0.83333333) rotate(0deg);
   margin-left: 3px;
-  color: #41AAE2;
+  color: rgba(0, 0, 0, 0.45);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
@@ -20864,8 +20862,8 @@ div.ant-typography-edit-content {
   margin-bottom: 8px;
   text-align: center;
   vertical-align: top;
-  background-color: #EFEFF3;
-  /*border: 1px dashed #d9d9d9;*/
+  background-color: #fafafa;
+  border: 1px dashed #d9d9d9;
   border-radius: 4px;
   cursor: pointer;
   transition: border-color 0.3s ease;
@@ -21308,23 +21306,3 @@ div.ant-typography-edit-content {
   src: local('Noto Sans'), local('NotoSans'), url(https://fonts.gstatic.com/s/notosans/v9/o-0IIpQlx3QUlC5A4PNr5TRF.ttf) format('truetype');
 }
 /*# sourceMappingURL=app.css.map */
-
-
-.sign-up-form-submit-btn {
-  margin-top: 34px;
-}
-
-.border-bottom {
-  padding-top: 20px;
-  border-bottom: 2px solid #41AAE2;
-}
-
-.preview-form {
-  padding-top: 0;
-}
-
-.preview-edit-details-form {
-  padding-right: 0;
-  padding-top: 20px;
-  border-bottom: 2px solid #41AAE2;
-}

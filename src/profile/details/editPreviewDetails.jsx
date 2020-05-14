@@ -8,9 +8,9 @@ import '../../styles/editPreviewDetails.scss'
 
 function EditPreviewDetails({ formik, onCancel }) {
   const [initialValues] = useState({
-    email: formik.values.email,
+    name: formik.values.name,
     cityState: formik.values.cityState,
-    gender: formik.values.gender,
+    country: formik.values.country,
   })
 
   const previewHeader = {
@@ -24,14 +24,14 @@ function EditPreviewDetails({ formik, onCancel }) {
     onCancel: () => {
       const {
         values: {
-          email, cityState, gender, ...restValues
+          name, cityState, country, ...restValues
         },
       } = formik
 
       formik.resetForm({
-        email: initialValues.email,
+        name: initialValues.name,
         cityState: initialValues.cityState,
-        gender: initialValues.gender,
+        country: initialValues.country,
         ...restValues,
       })
       onCancel()
